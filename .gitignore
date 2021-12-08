@@ -1,0 +1,12 @@
+# ignore bbr scripts
+deployments/bbr.sh
+
+# ignore ssr scripts
+deployments/kcptun_for_ss_ssr-install.sh
+
+# ignore all the deployments logs
+deployments/*.log
+
+#ignore others
+.history
+proxmark3.log
