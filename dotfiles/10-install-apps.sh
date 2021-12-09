@@ -17,6 +17,9 @@ if [[ ${APPS[@]} ]]; then
           sudo apt -y install ${APPS[@]}
         fi
 	    if [[ $(command -v pacman) != "" ]];  then
+        ../scripts/arch/add-archlinuxcn.sh
+        ../scripts/arch/pacman-essential.sh
+        ../scripts/arch/update-pacman-conf.sh
 	      sudo pacman -S ${APPS[@]} --noconfirm
 	    fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
