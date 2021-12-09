@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ $(command -v "reflector") = "" ]]; then
-  sudo pacman -S reflector
+  sudo pacman -S reflector --noconfirm
 fi
 
 sudo reflector --country China --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
@@ -22,8 +22,8 @@ EOT
 fi
 
 sudo pacman -Sy
-sudo pacman -S archlinuxcn-keyring
-sudo pacman -S archlinuxcn-mirrorlist-git
+sudo pacman -S archlinuxcn-keyring --noconfirm
+sudo pacman -S archlinuxcn-mirrorlist-git --noconfirm
 
 if [ -f /etc/pacman.d/archlinuxcn-mirrorlist.pacnew ]; then
     sudo rm /etc/pacman.d/archlinuxcn-mirrorlist
