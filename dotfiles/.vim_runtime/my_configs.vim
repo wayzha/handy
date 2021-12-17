@@ -19,4 +19,4 @@ nnoremap <leader>c :tabedit ~/.vim_runtime/my_configs.vim<CR>
 nnoremap <leader>op :!open "%"<CR>
 nnoremap <leader>uo :PlantumlOpen<CR>
 
-au BufNewFile,BufRead Jenkinsfile setf groovy
+autocmd BufNewFile,BufRead Jenkinsfile set syntax=groovy
