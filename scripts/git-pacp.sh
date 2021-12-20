@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-git pull && git add -A && git commit -m "update" && git push
+COMMIT_MESSAGE="update"
+
+[ -n "$1" ] && COMMIT_MESSAGE=$1
+
+git pull && git add -A && git commit -m $COMMIT_MESSAGE && git push
