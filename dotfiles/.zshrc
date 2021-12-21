@@ -117,7 +117,6 @@ export PATH="$HOME/workspace/git/shady/scripts:$PATH"
 export PATH="/snap/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 # export PATH="/usr/local/opt/ruby/bin:$PATH"
 # export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
@@ -134,10 +133,11 @@ alias kn='kubens'
 # Prepare JAVA_HOME
 if [[ -f /usr/libexec/java_home ]]; then
   export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`
+  export PATH=$JAVA_HOME/bin:$PATH
 fi
 
-alias j8='unset JAVA_HOME;export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`'
-alias j11='unset JAVA_HOME;export JAVA_HOME=`/usr/libexec/java_home -v 11`'
+alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
+alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
