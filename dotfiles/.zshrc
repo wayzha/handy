@@ -177,8 +177,8 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # enable asdf
-if [[ -f $(brew --prefix)/opt/asdf/libexec/asdf.sh ]]; then
-  source $(brew --prefix)/opt/asdf/libexec/asdf.sh
+if [[ -f /usr/local/opt/asdf/libexec/asdf.sh ]]; then
+  source /usr/local/opt/asdf/libexec/asdf.sh
 fi
 
 # change TERM for tmux
