@@ -98,6 +98,7 @@ plugins=(
   asdf
   kubectl #potential performance issue with big sur
   helm
+  autoupdate
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -176,8 +177,8 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # enable asdf
-if [[ -f /usr/local/opt/asdf/libexec/asdf.sh ]]; then
-  source /usr/local/opt/asdf/libexec/asdf.sh
+if [[ -f $(brew --prefix)/opt/asdf/libexec/asdf.sh ]]; then
+  source $(brew --prefix)/opt/asdf/libexec/asdf.sh
 fi
 
 # change TERM for tmux
