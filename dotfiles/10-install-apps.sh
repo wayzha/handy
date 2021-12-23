@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("autojump" "tmux" "zsh" "curl")
-
+APPS=("tmux" "zsh" "curl")
 for APP in "${APPS[@]}"; do
     if [[ $(command -v "$APP") != "" ]]; then
         echo "$APP exists..."
@@ -9,18 +8,28 @@ for APP in "${APPS[@]}"; do
     fi
 done
 
-if [[ ${APPS[@]} ]]; then
+APPS2=("autojump")
+for APP in "${APPS2[@]}"; do
+    if [[ $(command -v "$APP") != "" ]]; then
+        echo "$APP exists..."
+        APPS2=("${APPS2[@]/$APP}")
+    fi
+done
+
+if [[ ${APPS[@]} || ${APPS2[@]} ]]; then
     echo "Installing $APPS"
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        # Linux
+      # Linux
 	    if [[ $(command -v apt) != "" ]];  then
           sudo apt -y install ${APPS[@]}
-        fi
+          sudo apt -y install ${APPS2[@]}
+      fi
 	    if [[ $(command -v pacman) != "" ]];  then
         ../scripts/arch/add-archlinuxcn.sh
         ../scripts/arch/pacman-essential.sh
         ../scripts/arch/update-pacman-conf.sh
 	      sudo pacman -S ${APPS[@]} --noconfirm
+	      sudo pacman -S ${APPS2[@]} --noconfirm
 	    fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
@@ -28,6 +37,7 @@ if [[ ${APPS[@]} ]]; then
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         fi
         brew install ${APPS[@]}
+        brew install ${APPS2[@]}
     else
         # Unknown OS
         echo "Unknown OS. Do nothing..."
