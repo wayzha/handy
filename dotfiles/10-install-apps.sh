@@ -21,8 +21,9 @@ if [[ ${APPS[@]} || ${APPS2[@]} ]]; then
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       # Linux
 	    if [[ $(command -v apt-get) != "" ]];  then
-          sudo apt-get -y install ${APPS[@]}
-          sudo apt-get -y install ${APPS2[@]}
+        sudo apt-get update
+        sudo apt-get -y install ${APPS[@]}
+        sudo apt-get -y install ${APPS2[@]}
       fi
 	    if [[ $(command -v pacman) != "" ]];  then
         ../scripts/arch/add-archlinuxcn.sh
