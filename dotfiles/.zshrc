@@ -168,9 +168,17 @@ alias lt="sudo lsof -nP -iTCP -sTCP:LISTEN"
 alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
 alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
+
+alias jh="cd ~/workspace/git/handy"
+alias js="cd ~/workspace/git/shady"
+alias jw="cd ~/workspace/git/webby/web"
+alias jt="cd ~/workspace/git/teddy/terraform"
+alias ja="cd ~/workspace/git/shady/ansible/default"
+
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
 fi
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
