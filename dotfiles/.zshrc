@@ -112,16 +112,6 @@ fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# additional path
-export PATH="$HOME/workspace/git/handy/scripts:$PATH"
-export PATH="$HOME/workspace/git/shady/scripts:$PATH"
-export PATH="/snap/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/opt/node@12/bin:$PATH"
-export PATH="/usr/local/opt/influxdb@1/bin:$PATH"
-#export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
-
 # Prepare K8S
 if [[ -d $HOME/.kube ]]; then
   export KUBECONFIG=`ls -p $HOME/.kube/config* | tr '\n' ':'`

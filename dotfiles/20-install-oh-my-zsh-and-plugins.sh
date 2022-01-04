@@ -13,7 +13,7 @@ git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git ${ZSH_CUST
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # install dotfiles
-DOTFILES=(".zshrc" ".p10k.zsh")
+DOTFILES=(".zshenv" ".zshrc" ".p10k.zsh")
 DOTFILES_PATH=$HOME/workspace/git/handy/dotfiles
 
 for FILE in "${DOTFILES[@]}"
