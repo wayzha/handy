@@ -18,7 +18,7 @@ fi
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
   if [[ $(command -v apt-get) != "" ]];  then
-    sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y
+    sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
   elif [[ $(command -v pacman) != "" ]];  then
     if [[ $(command -v yay) != "" ]]; then
       yay --noconfirm
