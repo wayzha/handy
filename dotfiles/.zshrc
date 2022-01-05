@@ -129,6 +129,11 @@ fi
 alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
 alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
 
+# reload .zshenv in the case of macos because /etc/zprofile removed the setting
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  source ~/.zshenv
+fi
+
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
