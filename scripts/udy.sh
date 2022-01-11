@@ -1,20 +1,14 @@
 #!/usr/bin/env bash
 
-SERVER_URL="www.google.com"
+source ${0%/*}/udy-env.sh
 
-wget -q -t 1 --timeout=1 --spider $SERVER_URL
-if [ $? != 0 ]; then
-  if [[ $(command -v proxy-localhost.sh) != "" ]]; then
-    echo "-----> Set Proxy."
-    source proxy-localhost.sh
-    wget -q -t 1 --timeout=1 --spider $SERVER_URL
-    if [ $? != 0 ]; then
-      echo "-----> Unset Proxy."
-      source proxy-unset.sh
-    fi
-  fi
+if [[ -d ~/workspace/git/handy ]]; then
+  echo "-----> Update Handy:"
+  cd ~/workspace/git/handy
+  git pull
 fi
 
+echo "-----> Update OS Packages:"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
   if [[ $(command -v apt-get) != "" ]];  then
@@ -34,9 +28,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 else
     # Unknown OS
     echo "-----> Unknown OS. No Package Update!"
-fi
-
-if [[ -d ~/workspace/git/handy ]]; then
-  cd ~/workspace/git/handy
-  git pull
 fi
