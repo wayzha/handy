@@ -15,7 +15,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
   elif [[ $(command -v pacman) != "" ]];  then
     if [[ $(command -v yay) != "" ]]; then
-      yay --noconfirm
+      yay -Syu --noconfirm
     else
       sudo pacman -Syu --noconfirm
     fi
