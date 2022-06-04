@@ -8,3 +8,12 @@ git clone https://github.com/wayzha/handy
 cd ~/workspace/git/handy/dotfiles/
 ./00-install-all.sh
 ```
+## switch from https to ssh
+```
+git remote set-url origin git@github.com:wayzha/handy.git
+```
+
+## switch from ssh to https
+```
+git remote set-url origin https://github.com/wayzha/handy.git
+```
