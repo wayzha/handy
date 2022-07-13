@@ -127,11 +127,11 @@ if [[ -f /usr/libexec/java_home ]]; then
   export PATH=$JAVA_HOME/bin:$PATH
 fi
 
-# Prepare Python Path
-export PATH="'"$(brew --prefix)"'/opt/python@3.9/libexec/bin:$PATH"
-
 alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
 alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
+
+# Prepare Python Path
+# export PATH="'"$(brew --prefix)"'/opt/python@3.9/libexec/bin:$PATH"
 
 # reload .zshenv in the case of macos because /etc/zprofile removed the setting
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -194,3 +194,7 @@ if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 
 # load acme env
 [[ ! -f ~/.acme.sh/acme.sh.env ]] || source ~/.acme.sh/acme.sh.env
+
+# Env for CIC Nexus
+export NEXUS_USER=developer
+export NEXUS_PASSWORD=oApEuutzXvptjPXm
