@@ -170,12 +170,16 @@ alias lu4="sudo lsof -nP -i4UDP"
 
 alias scd="sudo systemctl daemon-reload"
 function scr {
-  [ -n "$1" ] && export SYSTEMCTL_SVC=$1
-  sudo systemctl restart $SYSTEMCTL_SVC
+  [ -n "$1" ] && export SYSTEMD_SVC=$1
+  sudo systemctl restart $SYSTEMD_SVC
 }
 function scs {
-  [ -n "$1" ] && export SYSTEMCTL_SVC=$1
-  sudo systemctl status $SYSTEMCTL_SVC
+  [ -n "$1" ] && export SYSTEMD_SVC=$1
+  sudo systemctl status $SYSTEMD_SVC
+}
+function jcu {
+  [ -n "$1" ] && export SYSTEMD_SVC=$1
+  journalctl -u $SYSTEMD_SVC -xe
 }
 
 alias jh="cd ~/workspace/git/handy"
