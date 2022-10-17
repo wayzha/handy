@@ -169,8 +169,14 @@ alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
 alias scd="sudo systemctl daemon-reload"
-alias scr="sudo systemctl restart"
-alias scs="sudo systemctl status"
+function scr {
+  [ -n "$1" ] && export SYSTEMCTL_SVC=$1
+  sudo systemctl restart $SYSTEMCTL_SVC
+}
+function scs {
+  [ -n "$1" ] && export SYSTEMCTL_SVC=$1
+  sudo systemctl status $SYSTEMCTL_SVC
+}
 
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
