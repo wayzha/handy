@@ -168,6 +168,7 @@ alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
 alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
+alias scd="sudo systemctl daemon-reload"
 alias scr="sudo systemctl restart"
 alias scs="sudo systemctl status"
 
