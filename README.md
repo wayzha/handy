@@ -17,3 +17,8 @@ git remote set-url origin git@github.com:wayzha/handy.git
 ```
 git remote set-url origin https://github.com/wayzha/handy.git
 ```
+
+## others might useful
+```
+chsh -s $(which zsh)
+```
