@@ -168,7 +168,8 @@ alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
 alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
-alias sc="sudo systemctl"
+alias scr="sudo systemctl restart"
+alias scs="sudo systemctl status"
 
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
