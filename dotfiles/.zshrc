@@ -182,6 +182,16 @@ function jcu {
   journalctl -u $SYSTEMD_SVC -xe
 }
 
+function lcl {
+  [ -n "$1" ] && export SYSTEMD_SVC=$1
+  sudo launchctl list | grep $SYSTEMD_SVC
+}
+
+function lck {
+  [ -n "$1" ] && export SYSTEMD_SVC=$1
+  sudo launchctl kickstart -k $SYSTEMD_SVC
+}
+
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
 alias js="cd ~/workspace/git/shady"
