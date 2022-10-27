@@ -182,9 +182,9 @@ function jcu {
   journalctl -u $SYSTEMD_SVC -xe
 }
 
-function lcl {
+function lcz {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo launchctl list | grep $SYSTEMD_SVC
+  sudo launchctl list | grep net.zhangw 
 }
 
 function lck {
