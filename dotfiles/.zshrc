@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # source .zshenv if not sourced
-if [[ $PATH != 'workspace' ]]; then
+if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
 
