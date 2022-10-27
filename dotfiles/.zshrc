@@ -105,11 +105,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# source .zshrc_standard for SFSF development
-if [[ -f ~/.zshrc_standard ]]; then
-  source ~/.zshrc_standard
-fi
-
 # source .zshenv if not sourced
 if [[ $PATH != 'workspace' ]]; then
   source ~/.zshenv
@@ -200,7 +195,6 @@ function lck {
 alias tm="tmux new -As0"
 alias tmc="tmux -CC new -As0"
 
-export OSVM="192.168.235.54"
 alias sshosvm="ssh student@$OSVM -p 2222"
 
 alias jh="cd ~/workspace/git/handy"
@@ -234,3 +228,14 @@ if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 # Env for CIC Nexus
 export NEXUS_USER=developer
 export NEXUS_PASSWORD=oApEuutzXvptjPXm
+
+# source .zshrc_standard for SFSF development
+if [[ -f ~/.zshrc_standard ]]; then
+  source ~/.zshrc_standard
+fi
+
+# source .zshrc_local for extra rc content
+if [[ -f ~/.zshrc_local ]]; then
+  source ~/.zshrc_local
+fi
+
