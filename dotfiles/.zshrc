@@ -110,6 +110,11 @@ if [[ -f ~/.zshrc_standard ]]; then
   source ~/.zshrc_standard
 fi
 
+# source .zshenv if not sourced
+if [[ $PATH != 'workspace' ]]; then
+  source ~/.zshenv
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Prepare K8S
@@ -191,6 +196,9 @@ function lck {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
   sudo launchctl kickstart -k $SYSTEMD_SVC
 }
+
+alias tm="tmux new -As0"
+alias tmc="tmux -CC new -As0"
 
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
