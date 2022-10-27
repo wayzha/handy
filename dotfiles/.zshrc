@@ -105,11 +105,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# source .zshenv if not sourced
-if [[ $PATH != *workspace* ]]; then
-  source ~/.zshenv
-fi
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Prepare K8S
@@ -232,6 +227,11 @@ export NEXUS_PASSWORD=oApEuutzXvptjPXm
 # source .zshrc_standard for SFSF development
 if [[ -f ~/.zshrc_standard ]]; then
   source ~/.zshrc_standard
+fi
+
+# source .zshenv if not sourced
+if [[ $PATH != *workspace* ]]; then
+  source ~/.zshenv
 fi
 
 # source .zshrc_local for extra rc content
