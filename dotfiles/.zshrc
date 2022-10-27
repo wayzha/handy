@@ -195,6 +195,9 @@ function lck {
 alias tm="tmux new -As0"
 alias tmc="tmux -CC new -As0"
 
+alias cb17="ssh mb17 pbcopy"
+alias cb19="ssh mb19 pbcopy"
+
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
 alias js="cd ~/workspace/git/shady"
@@ -207,7 +210,6 @@ alias ja="cd ~/workspace/git/shady/ansible/default"
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
 fi
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
