@@ -201,7 +201,7 @@ alias tm="tmux new -As0"
 alias tmc="tmux -CC new -As0"
 
 export OSVM="192.168.235.54"
-alias sshvm="ssh student@$OSVM -p 2222"
+alias sshosvm="ssh student@$OSVM -p 2222"
 
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
