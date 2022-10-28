@@ -187,6 +187,10 @@ function lck {
   sudo launchctl kickstart -k $SYSTEMD_SVC
 }
 
+function osvm_pf {
+  ssh -N -L 0.0.0.0:3389:192.168.$1:3389 kali
+}
+
 alias tm="tmux new -As0"
 alias tmc="tmux -CC new -As0"
 
