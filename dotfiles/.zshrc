@@ -192,6 +192,7 @@ function osvm_pf {
 }
 
 alias tm="tmux new -As0"
+alias tms="tmux new -As9"
 alias tmc="tmux -CC new -As0"
 
 alias cb17="ssh mb17 pbcopy"
