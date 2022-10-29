@@ -1,4 +1,4 @@
-alias osvm_init="OSVM=$(ip route | grep 'via 192.168.119.1' | grep -v '10.11' | cut -d '/' -f 1|sed 's/\.0/\.52/')"
+alias osvm_init="OSVM=$(ip route | grep 'via 192.168.119.1' | grep -v '10.11' | cut -d '/' -f 1)"
 
 function osvm_up {
   osvm_init
