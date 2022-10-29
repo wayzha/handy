@@ -230,17 +230,17 @@ export NEXUS_USER=developer
 export NEXUS_PASSWORD=oApEuutzXvptjPXm
 
 # source .zshrc_standard for SFSF development
-if [[ -f ~/.zshrc_standard ]]; then
-  source ~/.zshrc_standard
-fi
+# if [[ -f ~/.zshrc_standard ]]; then
+#   source ~/.zshrc_standard
+# fi
 
 # source .zshenv if not sourced
 if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
 
-# source .zshrc_local for extra rc content
-if [[ -f ~/.zshrc_local ]]; then
-  source ~/.zshrc_local
+# source .zshrc_kali if that's marked as kali
+if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
+  source ~/.zshrc_kali
 fi
 

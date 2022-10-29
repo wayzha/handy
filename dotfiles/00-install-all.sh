@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "===> Link dotfiles:"
+./01-link-dotfiles.sh
+
 echo "===> Install apps:"
 ./10-install-apps.sh
 
