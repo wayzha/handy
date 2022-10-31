@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # link dotfiles
-DOTFILES=(".zshenv" ".zshrc" ".p10k.zsh" ".zshrc_kali")
+DOTFILES=(".zshenv" ".zshrc" ".p10k.zsh" ".zshrc_kali" ".zshrc_mac")
 DOTFILES_PATH=$HOME/workspace/git/handy/dotfiles
 
 for FILE in "${DOTFILES[@]}"
