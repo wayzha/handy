@@ -17,11 +17,11 @@ function osvm_ssh {
 }
 
 function osvm_pf {
-  RDP_PORT=3389
+  RDP_PORT=3800
   [[ -n $1 ]] && osvm_up $1
   [[ -n $2 ]] && RDP_PORT=$2
-  echo "Enable local port $RDP_PORT forwards to $OSVM:$RDP_PORT"
-  ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM:$RDP_PORT kali
+  echo "Enable local port $RDP_PORT forwards to $OSVM:3389"
+  ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM:3389 kali
 }
 
 function osvm_rdp {
