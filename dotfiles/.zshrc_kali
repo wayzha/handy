@@ -7,18 +7,27 @@ function osvm_up {
 }
 
 function osvm_ssh {
-  [[ -n $1 ]] && osvm_up $1
   SSH_USER="student"
   SSH_PORT=2222
+  [[ -n $1 ]] && osvm_up $1
+  [[ -n $2 ]] && SSH_PORT=$2
+  [[ -n $3 ]] && SSH_USER=$3
   echo "ssh connecting to $SSU_USER@$OSVM, port $SSH_PORT"
   ssh $SSH_USER@$OSVM -p $SSH_PORT
 }
 
 function osvm_pf {
-  [[ -n $1 ]] && osvm_up $1
   RDP_PORT=3389
+  [[ -n $1 ]] && osvm_up $1
+  [[ -n $2 ]] && RDP_PORT=$2
   echo "Enable local port $RDP_PORT forwards to $OSVM:$RDP_PORT"
   ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM:$RDP_PORT kali
+}
+
+function osvm_rdp {
+  [[ -n $1 ]] && osvm_up $1
+
+  rdesktop $OSVM -u Administrator -p lab -r disk:share=$HOME/workspace
 }
 
 # update $OSVM's IP address
