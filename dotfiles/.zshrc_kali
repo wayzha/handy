@@ -12,7 +12,7 @@ function osvm_ssh {
   [[ -n $1 ]] && osvm_up $1
   [[ -n $2 ]] && SSH_PORT=$2
   [[ -n $3 ]] && SSH_USER=$3
-  echo "ssh connecting to $SSU_USER@$OSVM, port $SSH_PORT"
+  echo "ssh connecting to $SSH_USER@$OSVM, port $SSH_PORT"
   ssh $SSH_USER@$OSVM -p $SSH_PORT
 }
 
