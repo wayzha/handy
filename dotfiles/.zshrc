@@ -177,14 +177,14 @@ function jcu {
   journalctl -u $SYSTEMD_SVC -xe
 }
 
-function lcz {
-  [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo launchctl list | grep net.zhangw 
+function lcl {
+  [ -n "$1" ] && LIST_NAME=$1
+  sudo launchctl list | grep $LIST_NAME
 }
 
 function lck {
-  [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo launchctl kickstart -k $SYSTEMD_SVC
+  [ -n "$1" ] && export LAUNCHD_SVC=$1
+  sudo launchctl kickstart -k $LAUNCHD_SVC
 }
 
 function osvm_pf {
