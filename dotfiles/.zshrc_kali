@@ -4,7 +4,7 @@ function osvm_up {
   IP_LAST_PART="0"
   [[ -n $1 ]] && IP_LAST_PART=$1
   osvm_init
-  OSVM="$(echo $OSVM | cut -d '.' -f 1-3)"
+  export OSVM="$(echo $OSVM | cut -d '.' -f 1-3)"
   OSVM+=".$IP_LAST_PART"
 }
 
