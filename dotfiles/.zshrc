@@ -207,6 +207,8 @@ alias jw="cd ~/workspace/git/webby/web"
 alias jt="cd ~/workspace/git/teddy/terraform"
 alias ja="cd ~/workspace/git/shady/ansible/default"
 
+alias gvt="gvim scp://kali/~/workspace/tmp/tmp.txt"
+
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
 fi
