@@ -195,6 +195,7 @@ alias tm="tmux new -As0"
 alias tms="tmux new -As9"
 alias tmc="tmux -CC new -As0"
 
+alias cb="pbcopy"
 alias cb17="ssh mb17 pbcopy"
 alias cb19="ssh mb19 pbcopy"
 
