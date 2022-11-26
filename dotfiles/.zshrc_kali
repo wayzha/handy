@@ -1,36 +1,80 @@
-alias osvm_init="export OSVM=$(ip route | grep 'via 192.168.119.1' | grep -v '10.11' | cut -d '/' -f 1)"
+alias os192init="export OSVM192=$(ip route | grep 'via 192.168.119.1' | grep '^192.168' | cut -d '/' -f 1)"
+alias os10init="export OSVM10=$(ip route | grep 'via 192.168.119.1' | grep '^10.11' | cut -d '/' -f 1)"
 
-function osvm_up {
-  IP_LAST_PART="0"
-  [[ -n $1 ]] && IP_LAST_PART=$1
-  osvm_init
-  export OSVM="$(echo $OSVM | cut -d '.' -f 1-3)"
-  OSVM+=".$IP_LAST_PART"
+function os192up {
+  IP_PART4="0"
+  [[ -n $1 ]] && IP_PART4=$1
+  os192init
+  export OSVM192="$(echo $OSVM192 | cut -d '.' -f 1-3)"
+  OSVM192+=".$IP_PART4"
 }
 
-function osvm_ssh {
+function os10up {
+  IP_PART2="11"
+  IP_PART3="1"
+  IP_PART4="0"
+  [[ -n $1 ]] && IP_PART4=$1
+  [[ -n $2 ]] && IP_PART2=$2 && IP_PART3=$2
+  os10init
+  export OSVM10="$(echo $OSVM10 | cut -d '.' -f 1)"
+  OSVM10+=".$IP_PART2"
+  OSVM10+=".$IP_PART3"
+  OSVM10+=".$IP_PART4"
+}
+
+function os192ssh {
   SSH_USER="student"
   SSH_PORT=2222
-  [[ -n $1 ]] && osvm_up $1
-  [[ -n $2 ]] && SSH_PORT=$2
-  [[ -n $3 ]] && SSH_USER=$3
-  echo "ssh connecting to $SSH_USER@$OSVM, port $SSH_PORT"
-  ssh $SSH_USER@$OSVM -p $SSH_PORT
+  [[ -n $1 ]] && osvm192_up $1
+  [[ -n $2 ]] && SSH_USER=$2
+  [[ -n $3 ]] && SSH_PORT=$3
+  echo "ssh connecting to $SSH_USER@$OSVM192, port $SSH_PORT"
+  ssh $SSH_USER@$OSVM192 -p $SSH_PORT
 }
 
-function osvm_pf {
+function os10ssh {
+  SSH_USER="student"
+  SSH_PORT=22
+  [[ -n $1 ]] && os10up $1
+  [[ -n $2 ]] && SSH_USER=$2
+  [[ -n $3 ]] && SSH_PORT=$3
+  [[ -n $4 ]] && os10up $1 $4
+  echo "ssh connecting to $SSH_USER@$OSVM10, port $SSH_PORT"
+  ssh $SSH_USER@$OSVM10 -p $SSH_PORT
+}
+
+function os192pf {
   RDP_PORT=3800
-  [[ -n $1 ]] && osvm_up $1
+  [[ -n $1 ]] && os192up $1
   [[ -n $2 ]] && RDP_PORT=$2
-  echo "Enable local port $RDP_PORT forwards to $OSVM:3389"
-  ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM:3389 kali
+  echo "Enable local port $RDP_PORT forwards to $OSVM192:3389"
+  ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM192:3389 kali
 }
 
-function osvm_rdp {
-  [[ -n $1 ]] && osvm_up $1
+function os10pf {
+  RDP_PORT=3800
+  [[ -n $1 ]] && os10up $1
+  [[ -n $2 ]] && RDP_PORT=$2
+  [[ -n $3 ]] && os10up $1 $3
+  echo "Enable local port $RDP_PORT forwards to $OSVM10:3389"
+  ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM10:3389 kali
+}
 
-  rdesktop $OSVM -u Administrator -p lab -r disk:share=$HOME/workspace
+function os192rdp {
+  [[ -n $1 ]] && os192up $1
+  [[ -n $2 ]] && RDP_USER=$2
+  [[ -n $3 ]] && RDP_PASS=$3
+  rdesktop $OSVM192 -u $RDP_USER -p $RDP_PASS -r disk:share=$HOME/workspace
+}
+
+function os10rdp {
+  [[ -n $1 ]] && os10up $1
+  [[ -n $2 ]] && RDP_USER=$2
+  [[ -n $3 ]] && RDP_PASS=$3
+  [[ -n $4 ]] && os10up $1 $4
+  rdesktop $OSVM10 -u $RDP_USER -p $RDP_PASS -r disk:share=$HOME/workspace
 }
 
 # update $OSVM's IP address
-osvm_init
+os192init
+os10init
