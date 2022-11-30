@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-echo "===> Link dotfiles:"
-./01-link-dotfiles.sh
-
 echo "===> Install apps:"
 ./10-install-apps.sh
 
@@ -14,3 +11,7 @@ echo "===> Install ultimate vimrc and plugins:"
 
 echo "===> Install tmux and plugins:"
 ./40-install-tmux-and-plugins.sh
+
+echo "===> Link dotfiles:"
+./50-link-dotfiles.sh
+
