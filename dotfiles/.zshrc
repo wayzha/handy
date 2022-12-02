@@ -178,11 +178,13 @@ function jcu {
 }
 
 function lcl {
+  LIST_NAME="net.zhangw"
   [ -n "$1" ] && LIST_NAME=$1
   sudo launchctl list | grep $LIST_NAME
 }
 
 function lck {
+  LAUNCHD_SVC="system/net.zhangw.sshd"
   [ -n "$1" ] && export LAUNCHD_SVC=$1
   sudo launchctl kickstart -k $LAUNCHD_SVC
 }
@@ -197,8 +199,7 @@ alias tmc="tmux -CC new -As0"
 
 alias cb="pbcopy"
 alias cb17="ssh mb17 pbcopy"
-alias cb19="ssh mb19 pbcopy"
-alias cb19h="ssh -J h2o mb19 pbcopy"
+alias cb19="ssh h2o pbcopy"
 
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
