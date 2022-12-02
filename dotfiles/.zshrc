@@ -199,7 +199,9 @@ alias tmc="tmux -CC new -As0"
 
 alias cb="pbcopy"
 alias cb17="ssh mb17 pbcopy"
-alias cb19="ssh h2o pbcopy"
+alias cb17h="ssh h2mb17 pbcopy"
+alias cb19="ssh mb19 pbcopy"
+alias cb19h="ssh h2mb19 pbcopy"
 
 alias jh="cd ~/workspace/git/handy"
 alias jhs="cd ~/workspace/git/handy/scripts"
