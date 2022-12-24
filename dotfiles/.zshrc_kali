@@ -75,6 +75,8 @@ function os10rdp {
   rdesktop $OSVM10 -u $RDP_USER -p $RDP_PASS -r disk:share=$HOME/workspace
 }
 
+alias tun0=ip-tun0.sh
+
 # update $OSVM's IP address
 os192init
 os10init
