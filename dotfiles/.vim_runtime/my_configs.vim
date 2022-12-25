@@ -9,6 +9,9 @@ set softtabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 
+# disable brackets auto close
+let g:autoclose_on = 0
+
 if has("linux")
   set gfn="Hack Regular":h10
 end
