@@ -11,7 +11,7 @@ if [[ -z "$SERVER_URL" ]]; then
       wget -q -t 1 --timeout=1 --spider $SERVER_URL
       if [ $? != 0 ]; then
         echo "-----> Unset Proxy."
-        source proxy-unset.sh
+        source proxy-env-unset.sh
       fi
     fi
   fi
