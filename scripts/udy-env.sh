@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z "$SERVER_URL" ]]; then
-  export SERVER_URL="www.google.com"
+  export SERVER_URL="www.facebook.com"
 
   wget -q -t 1 --timeout=1 --spider $SERVER_URL
   if [ $? != 0 ]; then
