@@ -101,9 +101,18 @@ plugins=(
   autoupdate
 )
 
-source $ZSH/oh-my-zsh.sh
+# source .zshrc_mac if that's marked as mac
+if [[ -f ~/.zshrc_mac_mark && -f ~/.zshrc_mac ]]; then
+  source ~/.zshrc_mac
+fi
 
-# User configuration
+# source .zshrc_kali if that's marked as kali
+if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
+  source ~/.zshrc_kali
+fi
+
+# load oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -248,13 +257,4 @@ if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
 
-# source .zshrc_mac if that's marked as mac
-if [[ -f ~/.zshrc_mac_mark && -f ~/.zshrc_mac ]]; then
-  source ~/.zshrc_mac
-fi
-
-# source .zshrc_kali if that's marked as kali
-if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
-  source ~/.zshrc_kali
-fi
 
