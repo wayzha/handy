@@ -11,4 +11,4 @@ latest_version=$(wget -qO- "ftp://gssc.esa.int/gnss/data/daily/$current_year/brd
 wget "ftp://gssc.esa.int/gnss/data/daily/$current_year/brdc/$latest_version"
 
 ## uncompress
-uncompress $latest_version
+gzip -d $latest_version
