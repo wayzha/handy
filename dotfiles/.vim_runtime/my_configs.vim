@@ -2,7 +2,9 @@ set number relativenumber
 set autowrite
 
 " On pressing tab, insert 2 spaces
-set expandtab
+# set expandtab
+" On pressing tab, insert a tab
+set noexpandtab
 " show existing tab with 2 spaces width
 set tabstop=2
 set softtabstop=2
