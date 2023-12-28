@@ -181,6 +181,12 @@ function scs {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
   sudo systemctl status $SYSTEMD_SVC
 }
+function scl {
+  scs sshproxy@home-mb14
+  scs sshproxy@inet-mb14
+  scs sshd
+  scs shadowsocks-libev
+}
 function jcu {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
   journalctl -u $SYSTEMD_SVC -xe
