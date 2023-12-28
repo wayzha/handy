@@ -197,11 +197,15 @@ function lcl {
   [ -n "$1" ] && LIST_NAME=$1
   sudo launchctl list | grep $LIST_NAME
 }
-
 function lck {
   LAUNCHD_SVC="system/net.zhangw.sshd"
   [ -n "$1" ] && export LAUNCHD_SVC=$1
   sudo launchctl kickstart -k $LAUNCHD_SVC
+}
+function lcp {
+  LAUNCHD_SVC="system/net.zhangw.sshd"
+  [ -n "$1" ] && export LAUNCHD_SVC=$1
+  sudo launchctl print $LAUNCHD_SVC
 }
 
 function osvm_pf {
