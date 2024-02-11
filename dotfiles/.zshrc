@@ -179,7 +179,7 @@ function scr {
 }
 function scs {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo systemctl status $SYSTEMD_SVC
+  sudo systemctl status --no-pager $SYSTEMD_SVC
 }
 function scl {
   scs sshproxy@home-mb14
