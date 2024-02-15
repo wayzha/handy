@@ -189,7 +189,7 @@ function scl {
 }
 function jcu {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
-  journalctl -u $SYSTEMD_SVC -xe
+  journalctl -efu $SYSTEMD_SVC -xe
 }
 
 function lcl {
