@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("tmux" "zsh" "curl")
+APPS=("tmux" "zsh" "curl" "jq")
 for APP in "${APPS[@]}"; do
     if [[ $(command -v "$APP") != "" ]]; then
         echo "$APP exists..."
