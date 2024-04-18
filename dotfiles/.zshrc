@@ -16,8 +16,6 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=/usr/local/bin:$PATH
 # export PATH=$HOME/bin:$PATH
-# pipx
-export PATH="$HOME/.local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
