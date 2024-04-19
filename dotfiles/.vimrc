@@ -393,8 +393,6 @@ set number relativenumber
 " Enable auto save
 set autowrite
 
-" GUI font setting
-set guifont=Menlo\ Regular:h14
 
 " On pressing tab, insert 2 spaces
 "set expandtab
@@ -413,9 +411,14 @@ set shiftwidth=2
 " disable brackets auto close
 let g:autoclose_on = 0
 
-if has("linux")
-  set gfn="Hack Regular":h10
-end
+" GUI font
+if has("gui_running")
+	if has("linux")
+	  set guifont=Hack\ Regular:h14
+	else
+		set guifont=Menlo\ Regular:h14
+	endif
+endif
 
 let mapleader = ","
 
