@@ -75,6 +75,10 @@ function os10rdp {
   rdesktop $OSVM10 -u $RDP_USER -p $RDP_PASS -r disk:share=$HOME/workspace
 }
 
+function osvm_pf {
+  ssh -N -L 0.0.0.0:3389:192.168.$1:3389 kali
+}
+
 alias tun0=ip-tun0.sh
 
 # update $OSVM's IP address

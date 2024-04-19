@@ -1,3 +1,24 @@
 export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 eval "$(brew shellenv)"
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+#Enable Homebrew completion (~/.zshrc)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+function lcl {
+  LIST_NAME="net.zhangw"
+  [ -n "$1" ] && LIST_NAME=$1
+  sudo launchctl list | grep $LIST_NAME
+}
+function lck {
+  LAUNCHD_SVC="system/net.zhangw.sshd"
+  [ -n "$1" ] && export LAUNCHD_SVC=$1
+  sudo launchctl kickstart -k $LAUNCHD_SVC
+}
+function lcp {
+  LAUNCHD_SVC="system/net.zhangw.sshd"
+  [ -n "$1" ] && export LAUNCHD_SVC=$1
+  sudo launchctl print $LAUNCHD_SVC
+}

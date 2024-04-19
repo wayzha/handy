@@ -8,11 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#Enable Homebrew completion (~/.zshrc)
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=/usr/local/bin:$PATH
 # export PATH=$HOME/bin:$PATH
@@ -116,9 +111,12 @@ fi
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Prepare K8S
+export MANPATH="/usr/local/man:$MANPATH"
+
+# Configure K8S
 if [[ -d $HOME/.kube ]]; then
   export KUBECONFIG=`ls -p $HOME/.kube/config* | tr '\n' ':'`
 fi
@@ -126,7 +124,7 @@ alias k='kubecolor'
 alias kx='kubectx'
 alias kn='kubens'
 
-# Prepare JAVA_HOME
+# Configure JAVA
 if [[ -f /usr/libexec/java_home ]]; then
   #export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`
   export JAVA_HOME=`/usr/libexec/java_home -v 11`
@@ -135,14 +133,6 @@ fi
 
 alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
 alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
-
-# Prepare Python Path
-# export PATH="'"$(brew --prefix)"'/opt/python@3.9/libexec/bin:$PATH"
-
-# reload .zshenv in the case of macos because /etc/zprofile removed the setting
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  source ~/.zshenv
-fi
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -158,15 +148,10 @@ else
 fi
 export SYSTEMD_EDITOR='vim'
 
-# Compilation flags
+# Configure compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
+# Configure aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lt="sudo lsof -nP -iTCP -sTCP:LISTEN"
@@ -194,26 +179,6 @@ function jcu {
   journalctl -efu $SYSTEMD_SVC -xe
 }
 
-function lcl {
-  LIST_NAME="net.zhangw"
-  [ -n "$1" ] && LIST_NAME=$1
-  sudo launchctl list | grep $LIST_NAME
-}
-function lck {
-  LAUNCHD_SVC="system/net.zhangw.sshd"
-  [ -n "$1" ] && export LAUNCHD_SVC=$1
-  sudo launchctl kickstart -k $LAUNCHD_SVC
-}
-function lcp {
-  LAUNCHD_SVC="system/net.zhangw.sshd"
-  [ -n "$1" ] && export LAUNCHD_SVC=$1
-  sudo launchctl print $LAUNCHD_SVC
-}
-
-function osvm_pf {
-  ssh -N -L 0.0.0.0:3389:192.168.$1:3389 kali
-}
-
 alias tm="tmux new -As0"
 alias tms="tmux new -As9"
 alias tmc="tmux -CC new -As0"
@@ -237,16 +202,11 @@ alias jtd="cd ~/workspace/git/teddy/docker"
 alias jtv="cd ~/workspace/git/teddy/vm"
 alias ja="cd ~/workspace/git/shady/ansible/default"
 
-alias gvt="gvim scp://kali/~/workspace/tmp/tmp.txt"
-
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# enable asdf
+# Configure asdf
 if [[ -f /usr/local/opt/asdf/libexec/asdf.sh ]]; then
   source /usr/local/opt/asdf/libexec/asdf.sh
 fi
@@ -258,12 +218,17 @@ if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 [[ ! -f ~/.acme.sh/acme.sh.env ]] || source ~/.acme.sh/acme.sh.env
 
 # Env for CIC Nexus
-export NEXUS_USER=developer
-export NEXUS_PASSWORD=oApEuutzXvptjPXm
+# export NEXUS_USER=developer
+# export NEXUS_PASSWORD=oApEuutzXvptjPXm
 
 # source .zshrc_standard for SFSF development
 # if [[ -f ~/.zshrc_standard ]]; then
 #   source ~/.zshrc_standard
+# fi
+
+# reload .zshenv in the case of macos because /etc/zprofile removed the setting
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+#   source ~/.zshenv
 # fi
 
 # source .zshenv if not sourced
