@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 
-# install dotfiles
-DOTFILES=(".tmux.conf" ".tmux.conf.local")
+# dotfiles
+RM_DOTFILES=(".tmux.conf" ".tmux.conf.local")
+LN_DOTFILES=(".tmux.conf.local")
+DOTFILES_PATH=$HOME/workspace/git/handy/dotfiles
 
-for FILE in "${DOTFILES[@]}"
+for FILE in "${RM_DOTFILES[@]}"
 do
     if [ -f ~/$FILE ]; then
         rm ~/$FILE
     fi
 done
 
-cd
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -sv ~/.tmux/.tmux.conf ~
 
-DOTFILES=(".tmux.conf.local")
-DOTFILES_PATH=$HOME/workspace/git/handy/dotfiles
-
-for FILE in "${DOTFILES[@]}"
+for FILE in "${LN_DOTFILES[@]}"
 do
     ln -sv $DOTFILES_PATH/$FILE ~
 done

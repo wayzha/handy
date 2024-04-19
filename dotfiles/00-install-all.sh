@@ -12,6 +12,3 @@ echo "===> Install ultimate vimrc and plugins:"
 echo "===> Install tmux and plugins:"
 ./40-install-tmux-and-plugins.sh
 
-echo "===> Link dotfiles:"
-./50-link-dotfiles.sh
-

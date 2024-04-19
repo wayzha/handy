@@ -12,3 +12,14 @@ git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git ${ZSH_CUST
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
+# link dotfiles
+DOTFILES=(".zshenv" ".zshrc" ".p10k.zsh" ".zshrc_kali" ".zshrc_mac")
+DOTFILES_PATH=$HOME/workspace/git/handy/dotfiles
+
+for FILE in "${DOTFILES[@]}"
+do
+    if [ -f ~/$FILE ]; then
+        rm ~/$FILE
+    fi
+    ln -sv $DOTFILES_PATH/$FILE ~
+done
