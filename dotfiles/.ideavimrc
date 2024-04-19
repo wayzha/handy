@@ -1,2 +1,1 @@
-set number relativenumber
-set autowrite
+source ~/.vimrc
