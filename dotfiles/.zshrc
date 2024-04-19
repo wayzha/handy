@@ -99,6 +99,7 @@ plugins=(
   asdf
   kubectl #potential performance issue with big sur
   helm
+	sudo
   autoupdate
 )
 

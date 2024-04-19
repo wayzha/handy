@@ -9,6 +9,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " vim plug plugin list
+" https://github.com/junegunn/vim-plug
 " run :PlugInstall after configuration
 call plug#begin()
 " The default plugin directory will be as follows:
@@ -16,25 +17,10 @@ call plug#begin()
 "   - Vim (Windows): '~/vimfiles/plugged'
 "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 " Make sure you use single quotes
-
-" Shorthand notation for GitHub; translates to https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/seoul256.vim.git'
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-" Using a non-default branch
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" On-demand loading: loaded when the specified command is executed
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-" On-demand loading: loaded when a file with a specific file type is opened
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Initialize plugin system
-" - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
-" You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -425,14 +411,13 @@ if has("linux")
   set gfn="Hack Regular":h10
 end
 
+let mapleader = ","
+
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
-
-let mapleader = ","
 
 nnoremap <leader>c :tabedit ~/.vim_runtime/my_configs.vim<CR>
 
 nnoremap <leader>op :!open "%"<CR>
-nnoremap <leader>uo :PlantumlOpen<CR>
 
 autocmd BufNewFile,BufRead Jenkinsfile set syntax=groovy
