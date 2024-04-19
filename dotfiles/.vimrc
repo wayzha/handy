@@ -387,8 +387,14 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => My Extra Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable row numbers
 set number relativenumber
+
+" Enable auto save
 set autowrite
+
+" GUI font setting
+set guifont=Menlo\ Regular:h14
 
 " On pressing tab, insert 2 spaces
 "set expandtab
