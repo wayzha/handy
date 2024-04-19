@@ -393,14 +393,13 @@ set number relativenumber
 " Enable auto save
 set autowrite
 
-
-" On pressing tab, insert 2 spaces
-"set expandtab
-" On pressing tab, insert a tab
+" On pressing tab, insert a tab instead of 2 spaces
 set noexpandtab
+
 " show existing tab with 2 spaces width
 set tabstop=2
 set softtabstop=2
+
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 
@@ -420,12 +419,13 @@ if has("gui_running")
 	endif
 endif
 
+" Set leader key
 let mapleader = ","
 
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
-nnoremap <leader>c :tabedit ~/.vim_runtime/my_configs.vim<CR>
+nnoremap <leader>c :tabedit ~/.vimrc<CR>
 
 nnoremap <leader>op :!open "%"<CR>
 
