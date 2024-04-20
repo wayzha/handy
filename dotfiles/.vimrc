@@ -410,7 +410,6 @@ set shiftwidth=2
 " disable brackets auto close
 let g:autoclose_on = 0
 
-" GUI font
 if has("gui_running")
 	if has("linux")
 	  set guifont=Hack\ Regular:h14
@@ -419,7 +418,6 @@ if has("gui_running")
 	endif
 endif
 
-" Set leader key
 let mapleader = ","
 
 " This unsets the "last search pattern" register by hitting return
@@ -430,3 +428,7 @@ nnoremap <leader>c :tabedit ~/.vimrc<CR>
 nnoremap <leader>op :!open "%"<CR>
 
 autocmd BufNewFile,BufRead Jenkinsfile set syntax=groovy
+
+" coc.nvim - use <cr>/<tab> to trigger completion
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
