@@ -10,7 +10,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " vim plug plugin list
-" https://github.com/junegunn/vim-plug
 " run :PlugInstall after configuration
 call plug#begin()
 " The default plugin directory will be as follows:
