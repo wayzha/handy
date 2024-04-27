@@ -592,9 +592,12 @@ endif
 autocmd BufNewFile,BufRead Jenkinsfile set syntax=groovy
 
 " my own shortcuts
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ve :tabedit $MYVIMRC<CR>
+nnoremap <leader>vs :source $MYVIMRC<CR>
 
-nnoremap <leader>o :!open "%"<CR>
+nnoremap <leader>op :!open "%"<CR>
 
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>ne :NERDTreeToggle<CR>
+
+" write with sudo even vi is openned without sudo
+nnoremap <leader>sw :w !sudo tee %<CR>
