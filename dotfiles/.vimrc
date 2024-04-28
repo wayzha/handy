@@ -591,6 +591,9 @@ endif
 " support Jenkinsfile
 autocmd BufNewFile,BufRead Jenkinsfile set syntax=groovy
 
+" install coc extensions
+let g:coc_global_extensions = [ 'coc-marketplace', 'coc-word', 'coc-snippets', 'coc-json', 'coc-pyright']
+
 " my own shortcuts
 nnoremap <leader>ve :tabedit $MYVIMRC<CR>
 nnoremap <leader>vs :source $MYVIMRC<CR>
