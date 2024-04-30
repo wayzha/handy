@@ -347,6 +347,10 @@ set -g mode-keys vi
 # move status line to top
 #set -g status-position top
 
+# nested tmux settings
+bind-key -n c-g send-prefix
+bind-key -n c-t send-keys c-g
+
 
 # -- tpm -----------------------------------------------------------------------
 
