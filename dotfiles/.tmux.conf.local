@@ -338,23 +338,21 @@ set -g status-keys vi
 set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+# nested tmux settings
+# top level key C-a
+# 3rd level key C-b
+# 4th level key C-g
+bind-key -n c-b send-prefix
+bind-key -n c-g send-keys c-b
 
 # move status line to top
 #set -g status-position top
-
-# nested tmux settings
-# top level key C-a/C-b
-# 2nd level key C-a/C-b x2
-# 3rd level key C-g
-# 4th level key C-t
-bind-key -n c-g send-prefix
-bind-key -n c-t send-keys c-g
-
 
 # -- tpm -----------------------------------------------------------------------
 
