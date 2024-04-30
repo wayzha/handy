@@ -348,6 +348,10 @@ set -g mode-keys vi
 #set -g status-position top
 
 # nested tmux settings
+# top level key C-a/C-b
+# 2nd level key C-a/C-b x2
+# 3rd level key C-g
+# 4th level key C-t
 bind-key -n c-g send-prefix
 bind-key -n c-t send-keys c-g
 
