@@ -19,7 +19,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
+
+if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+	ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -107,6 +111,9 @@ fi
 if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
   source ~/.zshrc_kali
 fi
+
+# enable tmux autostart
+ZSH_TMUX_AUTOSTART=true
 
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -235,4 +242,3 @@ if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
-
