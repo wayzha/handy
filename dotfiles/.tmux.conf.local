@@ -348,8 +348,8 @@ bind C-a send-prefix
 # top level key C-a
 # 3rd level key C-b
 # 4th level key C-g
-bind-key -n c-b send-prefix
-bind-key -n c-g send-keys c-b
+bind -n c-b send-prefix
+bind -n c-g send-keys c-b
 
 # move status line to top
 #set -g status-position top
@@ -394,6 +394,10 @@ tmux_conf_uninstall_plugins_on_reload=true
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-restore 'on'
+
+# -- my plugins
+set -g @plugin 'christoomey/vim-tmux-navigator'
+run '~/.tmux/plugins/tpm/tpm'
 
 
 # -- custom variables ----------------------------------------------------------

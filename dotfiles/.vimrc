@@ -17,7 +17,7 @@ call plug#begin()
 "   - Vim (Windows): '~/vimfiles/plugged'
 "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 " Make sure you use single quotes
-Plug 'junegunn/vim-easy-align'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()
