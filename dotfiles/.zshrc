@@ -181,8 +181,8 @@ function scs {
   sudo systemctl status --no-pager $SYSTEMD_SVC
 }
 function scl {
-  scs sshproxy@home-mb14
-  scs sshproxy@inet-mb14
+  scs sshproxy@home-`hostname`
+  scs sshproxy@inet-`hostname`
   scs sshd
   scs shadowsocks-libev
 }
