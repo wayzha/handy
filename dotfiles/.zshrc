@@ -184,7 +184,8 @@ function scl {
   scs sshproxy@home-`hostname`
   scs sshproxy@inet-`hostname`
   scs sshd
-  scs shadowsocks-libev
+  scs v2ray
+  #scs shadowsocks-libev
 }
 function jcu {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
