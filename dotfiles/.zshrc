@@ -172,6 +172,8 @@ alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
 alias scd="sudo systemctl daemon-reload"
+alias sclf="sudo systemctl list-unit-files --type=service --state=enabled"
+alias sclu="sudo systemctl list-units --type=service --state=running"
 function scr {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
   sudo systemctl restart $SYSTEMD_SVC
