@@ -22,6 +22,7 @@ EOT
 fi
 
 sudo pacman -Sy
+sudo pacman-key --lsign-key "farseerfc@archlinux.org"
 sudo pacman -S archlinuxcn-keyring --noconfirm
 sudo pacman -S archlinuxcn-mirrorlist-git --noconfirm
 
