@@ -217,7 +217,7 @@ alias jtd="cd ~/workspace/git/teddy/docker"
 alias jtv="cd ~/workspace/git/teddy/vm"
 alias ja="cd ~/workspace/git/shady/ansible/default"
 
-alias rdp40="ssh -NTL 3389:192.168.88.40:3389 h2rpi3"
+alias rdp40="ssh -fNTL 3389:192.168.88.40:3389 h2rpi3"
 
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
