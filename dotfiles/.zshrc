@@ -164,8 +164,6 @@ export SYSTEMD_EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # Configure aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lt="sudo lsof -nP -iTCP -sTCP:LISTEN"
 alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
 alias lu="sudo lsof -nP -iUDP"
@@ -200,10 +198,6 @@ function jcu {
   journalctl -efu $SYSTEMD_SVC -xe
 }
 
-alias tm="tmux new -As0"
-alias tms="tmux new -As9"
-alias tmc="tmux -CC new -As0"
-
 alias cb="pbcopy"
 alias cb17="ssh mb17 pbcopy"
 alias cb17h="ssh h2mb17 pbcopy"
@@ -222,6 +216,8 @@ alias jt="cd ~/workspace/git/teddy"
 alias jtd="cd ~/workspace/git/teddy/docker"
 alias jtv="cd ~/workspace/git/teddy/vm"
 alias ja="cd ~/workspace/git/shady/ansible/default"
+
+alias rdp40="ssh -NTL 3389:192.168.88.40:3389 h2rpi3"
 
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
