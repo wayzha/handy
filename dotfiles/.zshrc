@@ -217,6 +217,7 @@ alias jtd="cd ~/workspace/git/teddy/docker"
 alias jtv="cd ~/workspace/git/teddy/vm"
 alias ja="cd ~/workspace/git/shady/ansible/default"
 
+alias rdp821="ssh -fNTL 3389:192.168.88.21:3389 h2rpi3"
 alias rdp840="ssh -fNTL 3389:192.168.88.40:3389 h2rpi3"
 alias rdpkill="kill -9 $(lt | grep 'ssh.*127.0.0.1:3389' | cut -d' ' -f8)"
 
