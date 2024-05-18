@@ -218,6 +218,7 @@ alias jtv="cd ~/workspace/git/teddy/vm"
 alias ja="cd ~/workspace/git/shady/ansible/default"
 
 alias rdp40="ssh -fNTL 3389:192.168.88.40:3389 h2rpi3"
+alias rdpkill="kill -9 $(lt | grep 'ssh.*127.0.0.1:3389' | cut -d' ' -f8)"
 
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
