@@ -176,6 +176,10 @@ alias sclf="sudo systemctl list-unit-files --type=service --state=enabled"
 alias sclfa="sudo systemctl list-unit-files --type=service"
 alias sclu="sudo systemctl list-units --type=service --state=running"
 alias sclua="sudo systemctl list-units --type=service"
+function sce {
+  [ -n "$1" ] && export SYSTEMD_SVC=$1
+  sudo systemctl enable $SYSTEMD_SVC
+}
 function scr {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
   sudo systemctl restart $SYSTEMD_SVC
