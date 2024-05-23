@@ -112,8 +112,16 @@ if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
   source ~/.zshrc_kali
 fi
 
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
 # enable tmux autostart
 ZSH_TMUX_AUTOSTART=true
+
+# enable tmux iterm2 integration
+if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+	ZSH_TMUX_ITERM2=true
+fi
 
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -145,9 +153,6 @@ alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; exp
 if [[ -f $HOME/workspace/git/shady/scripts/pyenv.sh ]]; then
 	source $HOME/workspace/git/shady/scripts/pyenv.sh
 fi
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # force CLI color
 export CLICOLOR_FORCE=1
