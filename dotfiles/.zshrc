@@ -225,8 +225,8 @@ alias ja="cd ~/workspace/git/shady/ansible/default"
 alias rdp-ubt21="ssh -fNTL 3389:192.168.88.21:3389 h2rpi3"
 alias rdp-win40="ssh -fNTL 3389:192.168.88.40:3389 h2rpi3"
 alias rdp-mb14="ssh -fNTL 3389:127.0.0.1:3389 h2mb14"
-alias rdp-list="lt | grep 'ssh.*127.0.0.1:3389'"
-alias rdp-kill="kill -9 $(lt | grep 'ssh.*127.0.0.1:3389' | cut -d' ' -f8)"
+alias rdp-list="lt|grep 'ssh.*127.0.0.1:3389';ps aux|grep 'ssh.*127.0.0.1:3389'|grep -v 'grep'"
+alias rdp-kill="kill -9 $(lt|grep 'ssh.*127.0.0.1:3389'|cut -d' ' -f8)"
 
 alias tpm-up="~/.tmux/plugins/tpm/bin/install_plugins;~/.tmux/plugins/tpm/bin/update_plugins all;~/.tmux/plugins/tpm/bin/clean_plugins"
 
