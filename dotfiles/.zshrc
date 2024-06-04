@@ -168,6 +168,21 @@ export SYSTEMD_EDITOR='vim'
 # Configure compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# helper functions
+service_exists() {
+  local n=$1
+  if [[ $(systemctl list-units --all -t service --full --no-legend "$n.service" | sed 's/^\s*//g' | cut -f1 -d' ') == $n.service ]]; then
+      return 0
+  else
+      return 1
+  fi
+}
+scs_if_service_exists() {
+	if service_exists $1; then
+		scs $1
+	fi
+}
+
 # Configure aliases
 alias lt="sudo lsof -nP -iTCP -sTCP:LISTEN"
 alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
@@ -192,11 +207,12 @@ function scs {
   sudo systemctl status --no-pager $SYSTEMD_SVC
 }
 function scl {
-  scs sshproxy@home-`hostname`
-  scs sshproxy@inet-`hostname`
-  scs sshd
-  scs v2ray
-  #scs shadowsocks-libev
+  scs_if_service_exists sshproxy@home-`hostname`
+  scs_if_service_exists sshproxy@inet-`hostname`
+  scs_if_service_exists sshd
+  scs_if_service_exists v2ray
+  scs_if_service_exists shadowsocks-rust-server@ss
+  scs_if_service_exists shadowsocks-libev
 }
 function jcu {
   [ -n "$1" ] && export SYSTEMD_SVC=$1
