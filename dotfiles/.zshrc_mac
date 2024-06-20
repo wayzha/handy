@@ -8,10 +8,6 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-# env variables for CIC JFrog
-export PIPER_VAULTCREDENTIAL_ARTIFACTORY_REPO_NPM_PUBLIC="https://common.repositories.cloud.sap/artifactory/api/npm/eureka-npm-public/"
-export PIPER_VAULTCREDENTIAL_ARTIFACTORY_AUTH_TOKEN="UkVQT1NldXJla2EtamZyb2ctcjE6Y21WbWRHdHVPakF4T2pFM01UazFNemMyTnpnNldXMXhVR3RPTlZoM2FreFJVV3RQV1VOV1dGSnBWWHBzYldaSg=="
-
 function lcl {
   LIST_NAME="net.zhangw"
   [ -n "$1" ] && LIST_NAME=$1
