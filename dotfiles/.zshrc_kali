@@ -3,7 +3,7 @@ alias os10init="export OSVM10=$(ip route | grep 'via 192.168.119.1' | grep '^10.
 
 function os192up {
   IP_PART4="0"
-  [[ -n $1 ]] && IP_PART4=$1
+  [[ -n "$1" ]] && IP_PART4=$1
   os192init
   export OSVM192="$(echo $OSVM192 | cut -d '.' -f 1-3)"
   OSVM192+=".$IP_PART4"
@@ -13,8 +13,8 @@ function os10up {
   IP_PART2="11"
   IP_PART3="1"
   IP_PART4="0"
-  [[ -n $1 ]] && IP_PART4=$1
-  [[ -n $2 ]] && IP_PART2=$2 && IP_PART3=$2
+  [[ -n "$1" ]] && IP_PART4=$1
+  [[ -n "$2" ]] && IP_PART2=$2 && IP_PART3=$2
   os10init
   export OSVM10="$(echo $OSVM10 | cut -d '.' -f 1)"
   OSVM10+=".$IP_PART2"
@@ -25,9 +25,9 @@ function os10up {
 function os192ssh {
   SSH_USER="student"
   SSH_PORT=2222
-  [[ -n $1 ]] && osvm192_up $1
-  [[ -n $2 ]] && SSH_USER=$2
-  [[ -n $3 ]] && SSH_PORT=$3
+  [[ -n "$1" ]] && osvm192_up $1
+  [[ -n "$2" ]] && SSH_USER=$2
+  [[ -n "$3" ]] && SSH_PORT=$3
   echo "ssh connecting to $SSH_USER@$OSVM192, port $SSH_PORT"
   ssh $SSH_USER@$OSVM192 -p $SSH_PORT
 }
@@ -35,43 +35,43 @@ function os192ssh {
 function os10ssh {
   SSH_USER="student"
   SSH_PORT=22
-  [[ -n $1 ]] && os10up $1
-  [[ -n $2 ]] && SSH_USER=$2
-  [[ -n $3 ]] && SSH_PORT=$3
-  [[ -n $4 ]] && os10up $1 $4
+  [[ -n "$1" ]] && os10up $1
+  [[ -n "$2" ]] && SSH_USER=$2
+  [[ -n "$3" ]] && SSH_PORT=$3
+  [[ -n "$4" ]] && os10up $1 $4
   echo "ssh connecting to $SSH_USER@$OSVM10, port $SSH_PORT"
   ssh $SSH_USER@$OSVM10 -p $SSH_PORT
 }
 
 function os192pf {
   RDP_PORT=3800
-  [[ -n $1 ]] && os192up $1
-  [[ -n $2 ]] && RDP_PORT=$2
+  [[ -n "$1" ]] && os192up $1
+  [[ -n "$2" ]] && RDP_PORT=$2
   echo "Enable local port $RDP_PORT forwards to $OSVM192:3389"
   ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM192:3389 kali
 }
 
 function os10pf {
   RDP_PORT=3800
-  [[ -n $1 ]] && os10up $1
-  [[ -n $2 ]] && RDP_PORT=$2
-  [[ -n $3 ]] && os10up $1 $3
+  [[ -n "$1" ]] && os10up $1
+  [[ -n "$2" ]] && RDP_PORT=$2
+  [[ -n "$3" ]] && os10up $1 $3
   echo "Enable local port $RDP_PORT forwards to $OSVM10:3389"
   ssh -N -L 0.0.0.0:$RDP_PORT:$OSVM10:3389 kali
 }
 
 function os192rdp {
-  [[ -n $1 ]] && os192up $1
-  [[ -n $2 ]] && RDP_USER=$2
-  [[ -n $3 ]] && RDP_PASS=$3
+  [[ -n "$1" ]] && os192up $1
+  [[ -n "$2" ]] && RDP_USER=$2
+  [[ -n "$3" ]] && RDP_PASS=$3
   rdesktop $OSVM192 -u $RDP_USER -p $RDP_PASS -r disk:share=$HOME/workspace
 }
 
 function os10rdp {
-  [[ -n $1 ]] && os10up $1
-  [[ -n $2 ]] && RDP_USER=$2
-  [[ -n $3 ]] && RDP_PASS=$3
-  [[ -n $4 ]] && os10up $1 $4
+  [[ -n "$1" ]] && os10up $1
+  [[ -n "$2" ]] && RDP_USER=$2
+  [[ -n "$3" ]] && RDP_PASS=$3
+  [[ -n "$4" ]] && os10up $1 $4
   rdesktop $OSVM10 -u $RDP_USER -p $RDP_PASS -r disk:share=$HOME/workspace
 }
 

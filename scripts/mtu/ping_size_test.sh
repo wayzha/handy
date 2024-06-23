@@ -2,7 +2,7 @@
 
 HOST="192.168.235.44"
 
-[[ -n $1 ]] && HOST=$1
+[[ -n "$1" ]] && HOST=$1
 
 for size in $(seq 1350 1480); do
   ping -c 1 -w 1 -M do -s $size $HOST|tr -d "\n"
