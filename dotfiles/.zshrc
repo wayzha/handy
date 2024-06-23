@@ -219,6 +219,10 @@ function jcu {
   journalctl -efu $SYSTEMD_SVC -xe
 }
 
+function urldecode() {
+	echo -n "$1" | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"
+}
+
 alias cb="pbcopy"
 alias cb17="ssh mb17 pbcopy"
 alias cb17h="ssh h2mb17 pbcopy"
@@ -246,6 +250,7 @@ alias rdp-list="lt|grep 'ssh.*127.0.0.1:3389';ps aux|grep 'ssh.*127.0.0.1:3389'|
 alias rdp-kill="kill -9 $(lt|grep 'ssh.*127.0.0.1:3389'|cut -d' ' -f8)"
 
 alias tpm-up="~/.tmux/plugins/tpm/bin/install_plugins;~/.tmux/plugins/tpm/bin/update_plugins all;~/.tmux/plugins/tpm/bin/clean_plugins"
+
 
 if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
