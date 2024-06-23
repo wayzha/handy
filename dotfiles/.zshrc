@@ -219,6 +219,10 @@ function jcu {
   journalctl -efu $SYSTEMD_SVC -xe
 }
 
+function urlencode() {
+  python -c 'import urllib, sys; print urllib.quote(sys.argv[1], sys.argv[2])' "$1" "$urlencode_safe"
+}
+
 function urldecode() {
 	echo -n "$1" | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"
 }
