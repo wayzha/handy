@@ -5,11 +5,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/snap/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Configure Krew for K8S
-if [[ -d $HOME/.krew ]]; then
-	export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-fi
-
 #export PATH="/usr/local/opt/node@12/bin:$PATH"
 #export PATH="/usr/local/opt/influxdb@1/bin:$PATH"
 #export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
