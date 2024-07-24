@@ -135,7 +135,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 if [[ -d $HOME/.kube ]]; then
   export KUBECONFIG=`ls -p $HOME/.kube/config* | tr '\n' ':'`
 fi
-if [[ -d $HOME/.kube ]]; then
+if [[ -d $HOME/.krew ]]; then
 	export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi
 alias k='kubecolor'
