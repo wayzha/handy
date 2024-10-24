@@ -18,6 +18,7 @@ call plug#begin()
 "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 " Make sure you use single quotes
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'stephpy/vim-yaml'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()

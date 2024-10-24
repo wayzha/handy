@@ -3,14 +3,18 @@ set -Eeuo pipefail
 
 case "$OSTYPE" in
   darwin*|bsd*)
-    echo "Using BSD sed style"
-    sed_no_backup=( -i '' )
-    ;;
+	  # Require gnu-sed.
+		if ! [ -x "$(command -v gsed)" ]; then
+  	  echo "Error: 'gsed' is not istalled." >&2
+  	  echo "If you are using Homebrew, install with 'brew install gnu-sed'." >&2
+  	  exit 1
+  	fi
+		SED_CMD=gsed
+		;;
   *)
-    echo "Using GNU sed style"
-    sed_no_backup=( -i )
+		SED_CMD=sed
     ;;
 esac
 
-# then we can use sed like below which is compatible for both Mac & Linux
-# sed ${sed_no_backup[@]} -e "s/hello/bye/g" my_file.txt
+# Use '${SED_CMD}' instead of 'sed'
+# ${SED_CMD} -i'' -e 's/hello/bye/g' my_file.txt
