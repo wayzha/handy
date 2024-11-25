@@ -8,6 +8,10 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+#Set API token for kubectl-mcp
+#https://github.tools.sap/CoLa/kubectl-mcp
+export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token -h github.tools.sap)
+
 function lcl {
   LIST_NAME="net.zhangw"
   [ -n "$1" ] && LIST_NAME=$1
