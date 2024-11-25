@@ -21,7 +21,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+if [[ "$LC_TERMINAL" == "iTerm2" && "$OSTYPE" == "darwin"* ]]; then
 	ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
