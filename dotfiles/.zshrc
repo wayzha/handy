@@ -119,7 +119,7 @@ export LANG=en_US.UTF-8
 ZSH_TMUX_AUTOSTART=true
 
 # enable tmux iterm2 integration
-if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+if [[ "$LC_TERMINAL" == "iTerm2" && "$OSTYPE" == "darwin"* ]]; then
 	ZSH_TMUX_ITERM2=true
 fi
 
