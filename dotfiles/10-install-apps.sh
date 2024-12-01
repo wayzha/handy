@@ -8,7 +8,7 @@ for APP in "${APPS[@]}"; do
     fi
 done
 
-APPS2=("autojump")
+APPS2=("autojump" "mosh")
 for APP in "${APPS2[@]}"; do
     if [[ $(command -v "$APP") != "" ]]; then
         echo "$APP exists..."
