@@ -187,35 +187,37 @@ alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
 alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
-alias scd="sudo systemctl daemon-reload"
-alias sclf="sudo systemctl list-unit-files --type=service --state=enabled"
-alias sclfa="sudo systemctl list-unit-files --type=service"
-alias sclu="sudo systemctl list-units --type=service --state=running"
-alias sclua="sudo systemctl list-units --type=service"
-function sce {
-  [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo systemctl enable $SYSTEMD_SVC
-}
-function scr {
-  [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo systemctl restart $SYSTEMD_SVC
-}
-function scs {
-  [ -n "$1" ] && export SYSTEMD_SVC=$1
-  sudo systemctl status --no-pager $SYSTEMD_SVC
-}
-function scl {
-  scs_if_service_exists sshproxy@home-`hostname`
-  scs_if_service_exists sshproxy@inet-`hostname`
-  scs_if_service_exists sshd
-  scs_if_service_exists v2ray
-  scs_if_service_exists shadowsocks-rust-server@ss
-  scs_if_service_exists shadowsocks-libev
-}
-function jcu {
-  [ -n "$1" ] && export SYSTEMD_SVC=$1
-  journalctl -efu $SYSTEMD_SVC -xe
-}
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	alias scd="sudo systemctl daemon-reload"
+	alias sclf="sudo systemctl list-unit-files --type=service --state=enabled"
+	alias sclfa="sudo systemctl list-unit-files --type=service"
+	alias sclu="sudo systemctl list-units --type=service --state=running"
+	alias sclua="sudo systemctl list-units --type=service"
+	function sce {
+	  [ -n "$1" ] && export SYSTEMD_SVC=$1
+	  sudo systemctl enable $SYSTEMD_SVC
+	}
+	function scr {
+	  [ -n "$1" ] && export SYSTEMD_SVC=$1
+	  sudo systemctl restart $SYSTEMD_SVC
+	}
+	function scs {
+	  [ -n "$1" ] && export SYSTEMD_SVC=$1
+	  sudo systemctl status --no-pager $SYSTEMD_SVC
+	}
+	function scl {
+	  scs_if_service_exists sshproxy@home-`hostname`
+	  scs_if_service_exists sshproxy@inet-`hostname`
+	  scs_if_service_exists sshd
+	  scs_if_service_exists v2ray
+	  scs_if_service_exists shadowsocks-rust-server@ss
+	  scs_if_service_exists shadowsocks-libev
+	}
+	function jcu {
+	  [ -n "$1" ] && export SYSTEMD_SVC=$1
+	  journalctl -efu $SYSTEMD_SVC -xe
+	}
+fi
 
 function urlencode() {
   python -c 'import urllib, sys; print urllib.quote(sys.argv[1], sys.argv[2])' "$1" "$urlencode_safe"
