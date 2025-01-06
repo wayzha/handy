@@ -27,3 +27,15 @@ function lcp {
   [ -n "$1" ] && export LAUNCHD_SVC=$1
   sudo launchctl print $LAUNCHD_SVC
 }
+
+alias bsl="brew services list"
+function bss {
+  BREW_SVC="sing-box"
+  [ -n "$1" ] && export BREW_SVC=$1
+  brew services start $BREW_SVC
+}
+function bsi {
+  BREW_SVC="sing-box"
+  [ -n "$1" ] && export BREW_SVC=$1
+  brew services info $BREW_SVC
+}
