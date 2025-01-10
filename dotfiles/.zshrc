@@ -1,6 +1,7 @@
 # enable zprof profiling if needed
 # zmodload zsh/zprof
 
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -117,8 +118,8 @@ export LANG=en_US.UTF-8
 # enable tmux autostart
 ZSH_TMUX_AUTOSTART=true
 
-# load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# load oh-my-zsh if that's not launched from vscode
+[[ "$TERM_PROGRAM" != "vscode" ]] && source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
