@@ -8,10 +8,6 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-#Set API token for kubectl-mcp
-#https://github.tools.sap/CoLa/kubectl-mcp
-export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token -h github.tools.sap)
-
 function lcl {
   LIST_NAME="net.zhangw"
   [ -n "$1" ] && LIST_NAME=$1
@@ -39,3 +35,10 @@ function bsi {
   [ -n "$1" ] && export BREW_SVC=$1
   brew services info $BREW_SVC
 }
+
+# SAP Vault Address
+export VAULT_ADDR='https://vault.tools.sap/'
+
+#Set API token for kubectl-mcp
+#https://github.tools.sap/CoLa/kubectl-mcp
+export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token -h github.tools.sap)
