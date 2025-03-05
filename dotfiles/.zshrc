@@ -178,6 +178,26 @@ function urldecode() {
 	echo -n "$1" | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"
 }
 
+# base64url encode
+function base64url_encode {
+  (if [ -z "$1" ]; then cat -; else echo -n "$1"; fi) |
+    openssl base64 -e -A |
+      sed s/\\+/-/g |
+      sed s/\\//_/g |
+      sed -E s/=+$//
+}
+
+# base64url decode
+function base64url_decode {
+  INPUT=$(if [ -z "$1" ]; then echo -n $(cat -); else echo -n "$1"; fi)
+  MOD=$(($(echo -n "$INPUT" | wc -c) % 4))
+  PADDING=$(if [ $MOD -eq 2 ]; then echo -n '=='; elif [ $MOD -eq 3 ]; then echo -n '=' ; fi)
+  echo -n "$INPUT$PADDING" |
+    sed s/-/+/g |
+    sed s/_/\\//g |
+    openssl base64 -d -A
+}
+
 alias cb="pbcopy"
 alias cb17="ssh mb17 pbcopy"
 alias cb17h="ssh h2mb17 pbcopy"
