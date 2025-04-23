@@ -242,9 +242,9 @@ if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 [[ ! -f ~/.acme.sh/acme.sh.env ]] || source ~/.acme.sh/acme.sh.env
 
 # reload .zshenv in the case of macos because /etc/zprofile removed the setting
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#   source ~/.zshenv
-# fi
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  source ~/.zshenv
+fi
 
 # source .zshenv if not sourced
 if [[ $PATH != *workspace* ]]; then
