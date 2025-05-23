@@ -239,7 +239,7 @@ fi
 if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 
 # mihomo SAFE_PATHS
-export SAFE_PATHS=/usr/share:/srv/clash
+export SAFE_PATHS=/usr/share/yacd-meta:/usr/share/metacubexd:/usr/share/clash-dashboard-git:/srv/clash/clash-dashboard
 
 # load acme env
 [[ ! -f ~/.acme.sh/acme.sh.env ]] || source ~/.acme.sh/acme.sh.env
