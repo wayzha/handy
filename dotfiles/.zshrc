@@ -238,6 +238,9 @@ fi
 # change TERM for tmux
 if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
 
+# mihomo SAFE_PATHS
+export SAFE_PATHS=/usr/share:/srv/clash
+
 # load acme env
 [[ ! -f ~/.acme.sh/acme.sh.env ]] || source ~/.acme.sh/acme.sh.env
 
