@@ -254,3 +254,5 @@ if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
 
+# zsh bindkeys
+bindkey '^F' autosuggest-accept
