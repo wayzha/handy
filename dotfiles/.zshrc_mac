@@ -36,6 +36,9 @@ function bsi {
   brew services info $BREW_SVC
 }
 
+# Enable Claude Code
+source claude-init.sh
+
 # SAP Vault Address
 export VAULT_ADDR='https://vault.tools.sap/'
 
