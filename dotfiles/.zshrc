@@ -256,3 +256,14 @@ fi
 
 # zsh bindkeys
 bindkey '^F' autosuggest-accept
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# bun completions
+[ -s "/Users/I047794/.bun/_bun" ] && source "/Users/I047794/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
