@@ -259,7 +259,10 @@ bindkey '^F' autosuggest-accept
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+if command -v ng >/dev/null 2>&1; then
+  source <(ng completion script)
+fi
+
 
 # bun completions
 [ -s "/Users/I047794/.bun/_bun" ] && source "/Users/I047794/.bun/_bun"
