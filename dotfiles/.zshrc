@@ -171,7 +171,7 @@ alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
 function urlencode() {
-  python -c 'import urllib, sys; print urllib.quote(sys.argv[1], sys.argv[2])' "$1" "$urlencode_safe"
+  python3 -c 'import sys; from urllib.parse import quote; print(quote(sys.argv[1], sys.argv[2]))' "$1" "$urlencode_safe"
 }
 
 function urldecode() {
