@@ -258,7 +258,6 @@ fi
 # zsh bindkeys
 bindkey '^F' autosuggest-accept
 
-
 # Load Angular CLI autocompletion.
 if command -v ng >/dev/null 2>&1; then
   source <(ng completion script)
@@ -277,3 +276,6 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# support local installed claude
+alias claude="/Users/I047794/.claude/local/claude"
