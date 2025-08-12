@@ -271,4 +271,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # support local installed claude
-alias claude="$HOME/.claude/local/claude"
+[ -s "$HOME/.claude/local/claude" ] && alias claude="$HOME/.claude/local/claude"
