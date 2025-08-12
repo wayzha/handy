@@ -263,13 +263,6 @@ if command -v ng >/dev/null 2>&1; then
   source <(ng completion script)
 fi
 
-# Load nvm if ~/.nvm exists
-if [ -d "$HOME/.nvm" ]; then
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-	[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-fi
-
 # bun completions
 [ -s "/Users/I047794/.bun/_bun" ] && source "/Users/I047794/.bun/_bun"
 
