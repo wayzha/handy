@@ -264,11 +264,11 @@ if command -v ng >/dev/null 2>&1; then
 fi
 
 # bun completions
-[ -s "/Users/I047794/.bun/_bun" ] && source "/Users/I047794/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # support local installed claude
-alias claude="/Users/I047794/.claude/local/claude"
+alias claude="$HOME/.claude/local/claude"
