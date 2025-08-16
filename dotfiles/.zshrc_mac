@@ -43,12 +43,15 @@ function bsi {
   brew services info $BREW_SVC
 }
 
-# Enable Claude Code
-source claude-init.sh
-
 # SAP Vault Address
 export VAULT_ADDR='https://vault.tools.sap/'
 
+# Enable Proxy
+source proxy-localhost.sh
+
+# Enable Claude Code
+source claude-init.sh
+
 #Set API token for kubectl-mcp
 #https://github.tools.sap/CoLa/kubectl-mcp
-export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token -h github.tools.sap)
+#export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token -h github.tools.sap)
