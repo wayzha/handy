@@ -47,7 +47,7 @@ function bsi {
 export VAULT_ADDR='https://vault.tools.sap/'
 
 # Enable Proxy
-source proxy-localhost.sh
+source proxy-localhost.sh >/dev/null 2>&1
 
 # Enable Claude Code
 source claude-init.sh
