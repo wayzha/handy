@@ -36,11 +36,11 @@ export UPDATE_ZSH_DAYS=60
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  autojump #brew install
+  autojump #pkg mgr install
   zsh-autosuggestions #git install
   zsh-syntax-highlighting #git install
   git
-  tmux #brew install
+  tmux #pkg mgr install
   colorize
   colored-man-pages
   docker
