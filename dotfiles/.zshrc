@@ -170,40 +170,6 @@ alias lt4="sudo lsof -nP -i4TCP -sTCP:LISTEN"
 alias lu="sudo lsof -nP -iUDP"
 alias lu4="sudo lsof -nP -i4UDP"
 
-function urlencode() {
-  python3 -c 'import sys; from urllib.parse import quote; print(quote(sys.argv[1], sys.argv[2]))' "$1" "$urlencode_safe"
-}
-
-function urldecode() {
-	echo -n "$1" | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"
-}
-
-# base64url encode
-function base64url_encode {
-  (if [ -z "$1" ]; then cat -; else echo -n "$1"; fi) |
-    openssl base64 -e -A |
-      sed s/\\+/-/g |
-      sed s/\\//_/g |
-      sed -E s/=+$//
-}
-
-# base64url decode
-function base64url_decode {
-  INPUT=$(if [ -z "$1" ]; then echo -n $(cat -); else echo -n "$1"; fi)
-  MOD=$(($(echo -n "$INPUT" | wc -c) % 4))
-  PADDING=$(if [ $MOD -eq 2 ]; then echo -n '=='; elif [ $MOD -eq 3 ]; then echo -n '=' ; fi)
-  echo -n "$INPUT$PADDING" |
-    sed s/-/+/g |
-    sed s/_/\\//g |
-    openssl base64 -d -A
-}
-
-alias cb="pbcopy"
-alias cb17="ssh mb17 pbcopy"
-alias cb17h="ssh h2mb17 pbcopy"
-alias cb19="ssh mb19 pbcopy"
-alias cb19h="ssh h2mb19 pbcopy"
-
 alias jh="cd ~/workspace/git/handy"
 alias jhd="cd ~/workspace/git/handy/dotfiles"
 alias jhs="cd ~/workspace/git/handy/scripts"
@@ -231,6 +197,33 @@ if [[ $(command -v vim) != "" ]]; then
     alias vi="vim"
 fi
 
+# url encoding
+function urlencode() {
+  python3 -c 'import sys; from urllib.parse import quote; print(quote(sys.argv[1], sys.argv[2]))' "$1" "$urlencode_safe"
+}
+function urldecode() {
+	echo -n "$1" | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"
+}
+
+# base64url encoding
+function base64url_encode {
+  (if [ -z "$1" ]; then cat -; else echo -n "$1"; fi) |
+    openssl base64 -e -A |
+      sed s/\\+/-/g |
+      sed s/\\//_/g |
+      sed -E s/=+$//
+}
+function base64url_decode {
+  INPUT=$(if [ -z "$1" ]; then echo -n $(cat -); else echo -n "$1"; fi)
+  MOD=$(($(echo -n "$INPUT" | wc -c) % 4))
+  PADDING=$(if [ $MOD -eq 2 ]; then echo -n '=='; elif [ $MOD -eq 3 ]; then echo -n '=' ; fi)
+  echo -n "$INPUT$PADDING" |
+    sed s/-/+/g |
+    sed s/_/\\//g |
+    openssl base64 -d -A
+}
+
+
 # Configure asdf
 if [[ -f /usr/local/opt/asdf/libexec/asdf.sh ]]; then
   source /usr/local/opt/asdf/libexec/asdf.sh
@@ -257,18 +250,3 @@ fi
 
 # zsh bindkeys
 bindkey '^F' autosuggest-accept
-
-# Load Angular CLI autocompletion.
-if command -v ng >/dev/null 2>&1; then
-  source <(ng completion script)
-fi
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# support local installed claude
-[ -s "$HOME/.claude/local/claude" ] && alias claude="$HOME/.claude/local/claude"
