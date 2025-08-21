@@ -252,3 +252,8 @@ fi
 if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
+
+# Load Angular CLI autocompletion.
+if command -v ng >/dev/null 2>&1; then
+  source <(ng completion script)
+fi

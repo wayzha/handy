@@ -77,9 +77,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Enable Claude Code Env Variables
 source claude-init.sh
-
-# Load Angular CLI autocompletion.
-if command -v ng >/dev/null 2>&1; then
-  source <(ng completion script)
-fi
-
