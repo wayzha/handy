@@ -77,3 +77,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Enable Claude Code Env Variables
 source claude-init.sh
+
+# enable RBSC token
+source rbsc-init.sh
