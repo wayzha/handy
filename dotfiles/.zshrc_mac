@@ -1,19 +1,10 @@
+# path
 export PATH=$(brew --prefix)/opt/python/libexec/bin:$(brew --prefix)/bin:/usr/local/bin:$PATH
+
+# brew env
 eval "$(brew shellenv)"
 export HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api #brew.idayer.com
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles #brew.idayer.com
-
-#Enable Homebrew completion (~/.zshrc)
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
-# Load nvm if ~/.nvm exists
-if [ -d "$HOME/.nvm" ]; then
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
-	[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-fi
 
 # Alias for mac
 alias cb="pbcopy"
@@ -57,6 +48,19 @@ function bsi {
 #Set API token for kubectl-mcp
 #https://github.tools.sap/CoLa/kubectl-mcp
 #export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token -h github.tools.sap)
+
+#Enable Homebrew completion (~/.zshrc)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+# Load nvm if ~/.nvm exists
+if [ -d "$HOME/.nvm" ]; then
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
+	[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+fi
+
 
 # Enable Proxy
 source proxy-localhost.sh >/dev/null 2>&1

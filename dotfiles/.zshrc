@@ -54,6 +54,9 @@ plugins=(
   autoupdate
 )
 
+# force CLI color
+export CLICOLOR_FORCE=1
+
 # source .zshrc_mac if that's marked as mac
 if [[ -f ~/.zshrc_mac_mark && -f ~/.zshrc_mac ]]; then
   source ~/.zshrc_mac
@@ -73,47 +76,12 @@ ZSH_TMUX_AUTOSTART=true
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# zsh bindkeys
+bindkey '^F' autosuggest-accept
+
+
+# manpath env
 export MANPATH="/usr/local/man:$MANPATH"
-
-# Configure K8S
-if [[ -d $HOME/.kube ]]; then
-  export KUBECONFIG=`ls -p $HOME/.kube/*.yaml | tr '\n' ':'`
-fi
-if [[ -d $HOME/.krew ]]; then
-	export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-fi
-alias k='kubecolor'
-alias kx='kubectx'
-alias kn='kubens'
-
-# Configure JAVA
-if [[ -f /usr/libexec/java_home ]]; then
-  #export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`
-  export JAVA_HOME=`/usr/libexec/java_home -v 11`
-  export PATH=$JAVA_HOME/bin:$PATH
-fi
-
-alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
-alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
-
-# Configure Python
-if [[ -f $HOME/workspace/git/shady/scripts/pyenv.sh ]]; then
-	source $HOME/workspace/git/shady/scripts/pyenv.sh
-fi
-
-# force CLI color
-export CLICOLOR_FORCE=1
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-export SYSTEMD_EDITOR='vim'
-
-# Configure compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # helper functions
 service_exists() {
@@ -223,6 +191,43 @@ function base64url_decode {
     openssl base64 -d -A
 }
 
+# Configure K8S
+if [[ -d $HOME/.kube ]]; then
+  export KUBECONFIG=`ls -p $HOME/.kube/*.yaml | tr '\n' ':'`
+
+	alias k='kubecolor'
+	alias kx='kubectx'
+	alias kn='kubens'
+fi
+if [[ -d $HOME/.krew ]]; then
+	export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
+# Configure JAVA
+if [[ -f /usr/libexec/java_home ]]; then
+  #export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`
+  export JAVA_HOME=`/usr/libexec/java_home -v 11`
+  export PATH=$JAVA_HOME/bin:$PATH
+
+	alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
+	alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
+fi
+
+# Configure Python
+if [[ -f $HOME/workspace/git/shady/scripts/pyenv.sh ]]; then
+	source $HOME/workspace/git/shady/scripts/pyenv.sh
+fi
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+export SYSTEMD_EDITOR='vim'
+
+# Configure compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
 # Configure asdf
 if [[ -f /usr/local/opt/asdf/libexec/asdf.sh ]]; then
@@ -247,6 +252,3 @@ fi
 if [[ $PATH != *workspace* ]]; then
   source ~/.zshenv
 fi
-
-# zsh bindkeys
-bindkey '^F' autosuggest-accept
