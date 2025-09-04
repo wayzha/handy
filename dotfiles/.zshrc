@@ -211,6 +211,7 @@ if [[ -f /usr/libexec/java_home ]]; then
 
 	alias j8='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0`; export PATH=$JAVA_HOME/bin:$PATH'
 	alias j11='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; export PATH=$JAVA_HOME/bin:$PATH'
+	alias j17='unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 17`; export PATH=$JAVA_HOME/bin:$PATH'
 fi
 
 # Configure Python
