@@ -72,6 +72,10 @@ source proxy-localhost.sh >/dev/null 2>&1
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# sdkman
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
 # support local installed claude code
 [ -s "$HOME/.claude/local/claude" ] && alias claude="$HOME/.claude/local/claude"
 
