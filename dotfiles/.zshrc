@@ -257,3 +257,7 @@ fi
 if command -v ng >/dev/null 2>&1; then
   source <(ng completion script)
 fi
+
+#sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
