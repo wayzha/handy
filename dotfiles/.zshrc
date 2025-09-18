@@ -58,7 +58,7 @@ plugins=(
 export CLICOLOR_FORCE=1
 
 # source .zshrc_mac if that's marked as mac
-if [[ -f ~/.zshrc_mac_mark && -f ~/.zshrc_mac ]]; then
+if [[ -f ~/.zsh_mac_mark && -f ~/.zshrc_mac ]]; then
   source ~/.zshrc_mac
 fi
 

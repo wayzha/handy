@@ -61,10 +61,6 @@ if [ -d "$HOME/.nvm" ]; then
 	[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
-
-# Enable Proxy
-source proxy-localhost.sh >/dev/null 2>&1
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 

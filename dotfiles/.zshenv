@@ -14,3 +14,8 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 # if [[ "$OSTYPE" == "darwin"* ]]; then
 #   source proxy.sh
 # fi
+ 
+# source .zshenv_mac if that's marked as mac
+if [[ -f ~/.zsh_mac_mark && -f ~/.zshenv_mac ]]; then
+  source ~/.zshenv_mac
+fi
