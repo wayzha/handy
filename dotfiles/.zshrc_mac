@@ -16,7 +16,7 @@ alias cb19h="ssh h2mb19 pbcopy"
 function lcl {
   LIST_NAME="net.zhangw"
   [ -n "$1" ] && LIST_NAME=$1
-  sudo launchctl list | grep $LIST_NAME
+  sudo launchctl list | grep -E "$LIST_NAME|sing-box"
 }
 function lck {
   LAUNCHD_SVC="system/net.zhangw.sshd"
