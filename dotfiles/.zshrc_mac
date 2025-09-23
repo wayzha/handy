@@ -28,6 +28,12 @@ function lcp {
   [ -n "$1" ] && export LAUNCHD_SVC=$1
   sudo launchctl print $LAUNCHD_SVC
 }
+function los {
+	LAUNCHD_SVC_NAME="net.zhangw.sshd"
+  [ -n "$1" ] && export LAUNCHD_SVC_NAME=$1
+	log show --style syslog --last 10m | grep $LAUNCHD_SVC_NAME
+}
+	
 
 alias bsl="brew services list"
 function bss {
