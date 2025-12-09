@@ -603,11 +603,13 @@ nnoremap <leader>op :!open "%"<CR>
 
 nnoremap <leader>ne :NERDTreeToggle<CR>
 
-" prettier formatter
+" formatters
+" prettier
 nnoremap <leader>p :%!prettier --stdin-filepath %<CR>
-
-" jq formatter
+" jq
 nnoremap <leader>j :%!jq .<CR>
+" xml
+nnoremap <leader>x :%!xmllint --format -<CR>
 
 " write with sudo even vi is openned without sudo
 nnoremap <leader>sw :w !sudo tee %<CR>
