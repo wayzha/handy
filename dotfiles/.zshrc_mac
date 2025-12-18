@@ -80,5 +80,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Enable Claude Code Env Variables
 #source claude-init.sh
 
+#sdkman
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
 # enable RBSC token
 source rbsc-init.sh
