@@ -85,3 +85,6 @@ fi
 
 # enable RBSC token
 #source env-rbsc.sh
+
+# enable AI Core env
+source env-aicore-key.sh
