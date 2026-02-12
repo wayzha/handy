@@ -85,8 +85,8 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # helper functions
 service_exists() {
-  local n=$1
-  if [[ $(systemctl list-units --all -t service --full --no-legend "$n.service" | sed 's/^\s*//g' | cut -f1 -d' ') == $n.service ]]; then
+  local svc=$1
+	if systemctl list-units --all --type=service --full --no-legend "$svc" | grep -q .; then
       return 0
   else
       return 1
@@ -118,12 +118,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	  sudo systemctl status --no-pager $SYSTEMD_SVC
 	}
 	function scl {
-	  scs_if_service_exists sshproxy@home-`hostname`
-	  scs_if_service_exists sshproxy@inet-`hostname`
-	  scs_if_service_exists sshd
-	  scs_if_service_exists v2ray
-	  scs_if_service_exists shadowsocks-rust-server@ss
-	  scs_if_service_exists shadowsocks-libev
+	  scs_if_service_exists "sshproxy*.service"
+	  scs_if_service_exists "sshd.service"
+	  scs_if_service_exists "v2ray.service"
+	  scs_if_service_exists "shadowsocks*.service"
+	  scs_if_service_exists "sing-box.service"
 	}
 	function jcu {
 	  [ -n "$1" ] && export SYSTEMD_SVC=$1
