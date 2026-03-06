@@ -67,6 +67,11 @@ if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
   source ~/.zshrc_kali
 fi
 
+# source .zshrc_local if it exists
+if [[ -f  ~/.zshrc_local ]]; then
+  source ~/.zshrc_local
+fi
+
 # enable tmux autostart
 ZSH_TMUX_AUTOSTART=true
 
