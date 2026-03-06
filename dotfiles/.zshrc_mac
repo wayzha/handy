@@ -88,3 +88,6 @@ fi
 
 # enable AI Core env
 source env-aicore-key.sh
+
+# OpenClaw Completion
+[ -s "$HOME/.openclaw/completions/openclaw.zsh"] && source "$HOME/.openclaw/completions/openclaw.zsh"
