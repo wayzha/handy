@@ -57,21 +57,6 @@ plugins=(
 # force CLI color
 export CLICOLOR_FORCE=1
 
-# source .zshrc_mac if that's marked as mac
-if [[ -f ~/.zsh_mac_mark && -f ~/.zshrc_mac ]]; then
-  source ~/.zshrc_mac
-fi
-
-# source .zshrc_kali if that's marked as kali
-if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
-  source ~/.zshrc_kali
-fi
-
-# source .zshrc_local if it exists
-if [[ -f  ~/.zshrc_local ]]; then
-  source ~/.zshrc_local
-fi
-
 # enable tmux autostart
 ZSH_TMUX_AUTOSTART=true
 
@@ -261,4 +246,19 @@ fi
 # Load Angular CLI autocompletion.
 if command -v ng >/dev/null 2>&1; then
   source <(ng completion script)
+fi
+
+# source .zshrc_mac if that's marked as mac
+if [[ -f ~/.zsh_mac_mark && -f ~/.zshrc_mac ]]; then
+  source ~/.zshrc_mac
+fi
+
+# source .zshrc_kali if that's marked as kali
+if [[ -f ~/.zshrc_kali_mark && -f ~/.zshrc_kali ]]; then
+  source ~/.zshrc_kali
+fi
+
+# source .zshrc_local if it exists
+if [[ -f  ~/.zshrc_local ]]; then
+  source ~/.zshrc_local
 fi
