@@ -224,8 +224,15 @@ if [[ -f /usr/local/opt/asdf/libexec/asdf.sh ]]; then
   source /usr/local/opt/asdf/libexec/asdf.sh
 fi
 
-# change TERM for tmux
-if [ ! "$TMUX" = ""  ]; then export TERM=xterm-256color; fi
+# tmux settings
+if [ -n "$TMUX" ]; then
+  export TERM=xterm-256color
+  # nesting depth counter (used by .tmux.conf.local to set prefix per layer)
+  export TMUX_DEPTH=$((${TMUX_DEPTH:-0} + 1))
+fi
+
+# disable XON/XOFF flow control so C-s can be used as tmux prefix
+stty -ixon 2>/dev/null
 
 # mihomo SAFE_PATHS
 export SAFE_PATHS=/usr/share/yacd-meta:/usr/share/metacubexd:/usr/share/clash-dashboard-git:/srv/clash/clash-dashboard

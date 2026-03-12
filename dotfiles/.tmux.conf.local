@@ -337,19 +337,30 @@ set -g mouse on
 set -g status-keys vi
 set -g mode-keys vi
 
-# replace C-b by C-a instead of using both prefixes
+# prefix key settings (3-layer nesting support)
+# layer 1 (iTerm2 -CC / standalone): C-b
+# layer 2 (nested, TMUX_DEPTH=1):    C-a
+# layer 3 (nested, TMUX_DEPTH>=2):   C-s
+# TMUX_DEPTH is set in .zshrc_local
 set -gu prefix2
 unbind C-a
 unbind C-b
+unbind C-s
 set -g prefix C-b
 bind C-b send-prefix
 
-# nested tmux settings
-# top level key C-b
-# 3rd level key C-a
-# 4th level key C-g
-bind -n c-a send-prefix
-bind -n c-g send-keys c-a
+if-shell '[ "${TMUX_DEPTH:-0}" = "1" ]' {
+    set -g prefix C-a
+    unbind C-b
+    bind C-a send-prefix
+}
+
+if-shell '[ "${TMUX_DEPTH:-0}" -ge 2 ]' {
+    set -g prefix C-s
+    unbind C-b
+    unbind C-a
+    bind C-s send-prefix
+}
 
 # move status line to top
 #set -g status-position top
