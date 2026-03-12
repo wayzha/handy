@@ -341,15 +341,15 @@ set -g mode-keys vi
 set -gu prefix2
 unbind C-a
 unbind C-b
-set -g prefix C-a
-bind C-a send-prefix
+set -g prefix C-b
+bind C-b send-prefix
 
 # nested tmux settings
-# top level key C-a
-# 3rd level key C-b
+# top level key C-b
+# 3rd level key C-a
 # 4th level key C-g
-bind -n c-b send-prefix
-bind -n c-g send-keys c-b
+bind -n c-a send-prefix
+bind -n c-g send-keys c-a
 
 # move status line to top
 #set -g status-position top
