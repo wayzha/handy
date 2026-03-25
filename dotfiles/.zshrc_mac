@@ -86,6 +86,23 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
+# Fix: sdkman's PATH prepend gets defeated by macOS path_helper reordering.
+# Re-prepend sdkman candidates to ensure they take priority over /usr/bin stubs.
+if [[ -d "${SDKMAN_DIR}/candidates" ]]; then
+  for _sdk_dir in "${SDKMAN_DIR}"/candidates/*/current; do
+    [[ -d "$_sdk_dir" ]] || continue
+    if [[ -d "${_sdk_dir}/bin" ]]; then
+      export PATH="${_sdk_dir}/bin:${PATH}"
+    fi
+  done
+  unset _sdk_dir
+
+  # Ensure JAVA_HOME is set if sdkman missed it
+  if [[ -z "$JAVA_HOME" && -d "${SDKMAN_DIR}/candidates/java/current" ]]; then
+    export JAVA_HOME="${SDKMAN_DIR}/candidates/java/current"
+  fi
+fi
+
 # enable RBSC token
 #source env-rbsc.sh
 
