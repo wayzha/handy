@@ -83,10 +83,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #[ -s "$HOME/.claude/local/claude" ] && alias claude="$HOME/.claude/local/claude"
 
 #sdkman
-if command -v sdk >/dev/null 2>&1; then
-	export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-	[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-fi
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 # enable RBSC token
 #source env-rbsc.sh
