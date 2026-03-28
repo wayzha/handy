@@ -12,18 +12,19 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # tmux nesting depth counter — MUST be before oh-my-zsh (tmux plugin auto-starts tmux)
+# Uses LC_TMUX_DEPTH to pass depth across SSH (SSH forwards LC_* by default).
 # layer 0: outside tmux
 # layer 1: first tmux (iTerm -CC or standalone) → prefix C-b
 # layer 2: nested tmux (SSH remote)             → prefix C-a
 # layer 3+: deeper nesting                      → prefix C-s
 if [ -n "$TMUX" ]; then
-  export TMUX_DEPTH=$((${TMUX_DEPTH:-0} + 1))
+  export LC_TMUX_DEPTH=$((${LC_TMUX_DEPTH:-0} + 1))
   export TERM=xterm-256color
 
   # shell-driven prefix: every new shell actively sets the correct prefix
   # this is more reliable than if-shell in tmux config (which only runs on config load)
   _tmux_set_prefix() {
-    local depth="${TMUX_DEPTH:-1}"
+    local depth="${LC_TMUX_DEPTH:-1}"
     case "$depth" in
       1) tmux set-option -g prefix C-b  \; unbind C-a \; unbind C-s \; bind C-b send-prefix 2>/dev/null ;;
       2) tmux set-option -g prefix C-a  \; unbind C-b \; unbind C-s \; bind C-a send-prefix 2>/dev/null ;;

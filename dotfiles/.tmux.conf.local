@@ -355,13 +355,13 @@ unbind C-s
 set -g prefix C-b
 bind C-b send-prefix
 
-if-shell '[ "${TMUX_DEPTH:-0}" = "2" ]' {
+if-shell '[ "${LC_TMUX_DEPTH:-0}" = "2" ]' {
     set -g prefix C-a
     unbind C-b
     bind C-a send-prefix
 }
 
-if-shell '[ "${TMUX_DEPTH:-0}" -ge 3 ]' {
+if-shell '[ "${LC_TMUX_DEPTH:-0}" -ge 3 ]' {
     set -g prefix C-s
     unbind C-b
     unbind C-a
