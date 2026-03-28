@@ -83,8 +83,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #[ -s "$HOME/.claude/local/claude" ] && alias claude="$HOME/.claude/local/claude"
 
 #sdkman
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+if command -v brew >/dev/null 2>&1 && brew list --formula sdkman-cli >/dev/null 2>&1; then
+  export SDKMAN_DIR="$(brew --prefix sdkman-cli)/libexec"
+  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+fi
 
 # Fix: sdkman's PATH prepend gets defeated by macOS path_helper reordering.
 # Re-prepend sdkman candidates to ensure they take priority over /usr/bin stubs.
