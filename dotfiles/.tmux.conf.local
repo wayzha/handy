@@ -5,6 +5,11 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
+# -- window & pane index -------------------------------------------------------
+
+set -g base-index 1
+setw -g pane-base-index 1
+
 # -- navigation ----------------------------------------------------------------
 
 # if you're running tmux within iTerm2
