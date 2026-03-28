@@ -342,21 +342,12 @@ set -g mouse on
 set -g status-keys vi
 set -g mode-keys vi
 
-# prefix key: C-b for outer tmux, C-a for nested (inside another tmux)
-# Detection: $TMUX always exists inside if-shell (tmux sets it for children).
-# Compare the PID in $TMUX with the server's own PID:
-#   match    → this tmux set it itself → layer 1 (outer) → C-b
-#   mismatch → inherited from an outer tmux → nested      → C-a
+# prefix key: always C-a
+# Layer 1 (iTerm2 -CC) doesn't need prefix at all (iTerm handles everything).
+# Layer 2 (SSH remote) uses C-a.
 set -gu prefix2
-unbind C-a
-set -g prefix C-b
-bind C-b send-prefix
-
-if-shell '[ "$(echo "$TMUX" | cut -d, -f2)" != "$(tmux display -p "#{pid}")" ]' {
-    set -g prefix C-a
-    unbind C-b
-    bind C-a send-prefix
-}
+set -g prefix C-a
+bind C-a send-prefix
 
 # move status line to top
 #set -g status-position top
