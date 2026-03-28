@@ -342,30 +342,20 @@ set -g mouse on
 set -g status-keys vi
 set -g mode-keys vi
 
-# prefix key settings (3-layer nesting support)
-# The AUTHORITATIVE prefix is set by .zshrc (shell-driven, runs on every new pane/window).
-# The if-shell below is a FALLBACK for the initial config load when tmux server first starts.
-# layer 1 (TMUX_DEPTH=1): C-b   (iTerm2 -CC / standalone)
-# layer 2 (TMUX_DEPTH=2): C-a   (nested, e.g. SSH remote)
-# layer 3 (TMUX_DEPTH≥3): C-s   (deeper nesting)
+# prefix key: C-b for outer tmux, C-a for nested (inside another tmux)
+# Detection: $TMUX always exists inside if-shell (tmux sets it for children).
+# Compare the PID in $TMUX with the server's own PID:
+#   match    → this tmux set it itself → layer 1 (outer) → C-b
+#   mismatch → inherited from an outer tmux → nested      → C-a
 set -gu prefix2
 unbind C-a
-unbind C-b
-unbind C-s
 set -g prefix C-b
 bind C-b send-prefix
 
-if-shell '[ "${LC_TMUX_DEPTH:-0}" = "2" ]' {
+if-shell '[ "$(echo "$TMUX" | cut -d, -f2)" != "$(tmux display -p "#{pid}")" ]' {
     set -g prefix C-a
     unbind C-b
     bind C-a send-prefix
-}
-
-if-shell '[ "${LC_TMUX_DEPTH:-0}" -ge 3 ]' {
-    set -g prefix C-s
-    unbind C-b
-    unbind C-a
-    bind C-s send-prefix
 }
 
 # move status line to top

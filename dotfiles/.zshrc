@@ -11,30 +11,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# tmux nesting depth counter — MUST be before oh-my-zsh (tmux plugin auto-starts tmux)
-# Uses LC_TMUX_DEPTH to pass depth across SSH (SSH forwards LC_* by default).
-# layer 0: outside tmux
-# layer 1: first tmux (iTerm -CC or standalone) → prefix C-b
-# layer 2: nested tmux (SSH remote)             → prefix C-a
-# layer 3+: deeper nesting                      → prefix C-s
-if [ -n "$TMUX" ]; then
-  export LC_TMUX_DEPTH=$((${LC_TMUX_DEPTH:-0} + 1))
-  export TERM=xterm-256color
-
-  # shell-driven prefix: every new shell actively sets the correct prefix
-  # this is more reliable than if-shell in tmux config (which only runs on config load)
-  _tmux_set_prefix() {
-    local depth="${LC_TMUX_DEPTH:-1}"
-    case "$depth" in
-      1) tmux set-option -g prefix C-b  \; unbind C-a \; unbind C-s \; bind C-b send-prefix 2>/dev/null ;;
-      2) tmux set-option -g prefix C-a  \; unbind C-b \; unbind C-s \; bind C-a send-prefix 2>/dev/null ;;
-      *) tmux set-option -g prefix C-s  \; unbind C-b \; unbind C-a \; bind C-s send-prefix 2>/dev/null ;;
-    esac
-  }
-  _tmux_set_prefix
-  unfunction _tmux_set_prefix
-fi
-
 # disable XON/XOFF flow control so C-s can be used as tmux prefix
 stty -ixon 2>/dev/null
 
@@ -259,6 +235,11 @@ export SAFE_PATHS=/usr/share/yacd-meta:/usr/share/metacubexd:/usr/share/clash-da
 
 # load acme env
 [[ ! -f ~/.acme.sh/acme.sh.env ]] || source ~/.acme.sh/acme.sh.env
+
+# tmux settings
+if [ -n "$TMUX" ]; then
+  export TERM=xterm-256color
+fi
 
 # reload .zshenv in the case of macos because /etc/zprofile removed the setting
 if [[ "$OSTYPE" == "darwin"* ]]; then
