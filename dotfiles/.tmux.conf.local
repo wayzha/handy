@@ -343,10 +343,11 @@ set -g status-keys vi
 set -g mode-keys vi
 
 # prefix key settings (3-layer nesting support)
-# layer 1 (iTerm2 -CC / standalone): C-b
-# layer 2 (nested, TMUX_DEPTH=1):    C-a
-# layer 3 (nested, TMUX_DEPTH>=2):   C-s
-# TMUX_DEPTH is set in .zshrc_local
+# The AUTHORITATIVE prefix is set by .zshrc (shell-driven, runs on every new pane/window).
+# The if-shell below is a FALLBACK for the initial config load when tmux server first starts.
+# layer 1 (TMUX_DEPTH=1): C-b   (iTerm2 -CC / standalone)
+# layer 2 (TMUX_DEPTH=2): C-a   (nested, e.g. SSH remote)
+# layer 3 (TMUX_DEPTH≥3): C-s   (deeper nesting)
 set -gu prefix2
 unbind C-a
 unbind C-b
@@ -354,13 +355,13 @@ unbind C-s
 set -g prefix C-b
 bind C-b send-prefix
 
-if-shell '[ "${TMUX_DEPTH:-0}" = "1" ]' {
+if-shell '[ "${TMUX_DEPTH:-0}" = "2" ]' {
     set -g prefix C-a
     unbind C-b
     bind C-a send-prefix
 }
 
-if-shell '[ "${TMUX_DEPTH:-0}" -ge 2 ]' {
+if-shell '[ "${TMUX_DEPTH:-0}" -ge 3 ]' {
     set -g prefix C-s
     unbind C-b
     unbind C-a
