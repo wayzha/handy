@@ -14,10 +14,10 @@ alias cb19="ssh mb19 pbcopy"
 alias cb19h="ssh h2mb19 pbcopy"
 
 alias tun-afp-ds918="ssh -NL 5410:192.168.0.10:548 home"
+alias tun-hai-mb23="ssh -NL 6655:127.0.0.1:6655 j2mb23"
 alias tun-vnc-mb23="ssh -NL 5901:127.0.0.1:5900 h2mb23"
 alias tun-vnc-mn24="ssh -NL 5902:127.0.0.1:5900 h2mn24"
-alias tun-vnc-mb26="ssh -NL 5901:127.0.0.1:5900 h2mb26"
-alias tun-hai-mb23="ssh -NL 6655:127.0.0.1:6655 j2mb23"
+alias tun-vnc-mb25="ssh -NL 5901:127.0.0.1:5900 h2mb25"
 
 function lcl {
   LIST_NAME="net.zhangw"
