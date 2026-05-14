@@ -185,7 +185,7 @@ function base64url_decode {
 }
 
 # Configure K8S
-if [[ -d $HOME/.kube ]]; then
+if [[ -d $HOME/.kube ]] && ls $HOME/.kube/*.yaml &>/dev/null; then
   export KUBECONFIG=`ls -p $HOME/.kube/*.yaml | tr '\n' ':'`
 
 	alias k='kubecolor'
