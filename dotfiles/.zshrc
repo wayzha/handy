@@ -270,3 +270,6 @@ fi
 if [[ -f  ~/.zshrc_local ]]; then
   source ~/.zshrc_local
 fi
+
+# bun completions
+[ -s "/Users/I047794/.bun/_bun" ] && source "/Users/I047794/.bun/_bun"
