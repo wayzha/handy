@@ -58,7 +58,7 @@ plugins=(
 )
 
 # force CLI color
-#export CLICOLOR_FORCE=1
+export CLICOLOR_FORCE=0
 
 # enable tmux autostart
 ZSH_TMUX_AUTOSTART=true
