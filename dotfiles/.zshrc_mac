@@ -18,6 +18,7 @@ alias tun-hai-mb23="ssh -NL 6655:127.0.0.1:6655 j2mb23"
 alias tun-vnc-mb23="ssh -NL 5901:127.0.0.1:5900 h2mb23"
 alias tun-oclaw-mn24="ssh -NL 18789:127.0.0.1:18789 h2mn24"
 alias tun-vnc-mn24="ssh -NL 5902:127.0.0.1:5900 h2mn24"
+alias tun-claw-mn24="ssh -NL 18789:127.0.0.1:18789 h2mn24"
 alias tun-vnc-mb25="ssh -NL 5901:127.0.0.1:5900 h2mb25"
 
 function lcl {
