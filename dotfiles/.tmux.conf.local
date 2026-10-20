@@ -352,6 +352,10 @@ bind C-a send-prefix
 # move status line to top
 #set -g status-position top
 
+# oh my openagent
+set -g extended-keys on            # modified Enter keys (Shift+Enter, ...)
+set -g extended-keys-format csi-u  # Pi works best with csi-u
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
