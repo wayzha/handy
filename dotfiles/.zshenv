@@ -1,3 +1,6 @@
+# Homebrew (needed for non-interactive SSH sessions)
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 export PATH="$HOME/workspace/git/handy/scripts:$PATH"
 export PATH="$HOME/workspace/git/shady/scripts:$PATH"
 export PATH="$HOME/go/bin:$PATH"
