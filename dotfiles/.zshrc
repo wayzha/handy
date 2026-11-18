@@ -112,8 +112,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	}
 	function scl {
 	  scs_if_service_exists "sshproxy*.service"
+	  scs_if_service_exists "ssh.service"
 	  scs_if_service_exists "sshd.service"
-	  scs_if_service_exists "v2ray.service"
 	  scs_if_service_exists "shadowsocks*.service"
 	  scs_if_service_exists "sing-box.service"
 	}
